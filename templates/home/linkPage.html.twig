@@ -23,7 +23,7 @@
 
     <ul id="liste">
         {% for item in articles %}
-           <h2><li><a href="#">{{ item }}</a></li></h2>
+           <h2><li><a href="#">{{ item.title }}</a></li> <br> {{ item.content }}</h2>
         {% endfor %}
     </ul>
     </body>

@@ -3,6 +3,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use phpDocumentor\Reflection\DocBlock\Tags\Link;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -21,12 +22,10 @@ class BlogController extends AbstractController
     public function homepage(): Response
     {
 
-        $liens = array("article 1","article 2","article 3 ");
+        $entityManager = $this->getDoctrine()->getManager();
+        $articles = $entityManager->getRepository(Post::class)->findAll();
 
-        return $this->render('home/linkPage.html.twig',
-                                array ('articles'=>$liens)
-                                );
-
+        return $this->render('home/linkPage.html.twig', array ('articles'=>$articles));
     }
 
     /**

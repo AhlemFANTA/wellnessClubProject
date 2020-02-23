@@ -1,0 +1,26 @@
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Ajouter un article</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        {{ form_start(form, {
+            'attr': {
+                'novalidate': 'novalidate',
+                'class': 'col-lg-5'
+            }
+        })
+        }}
+
+        {{ form_row(form.title) }}
+        {{ form_row(form.content) }}
+        {{ form_row(form.author) }}
+
+
+        <button type="submit" class="btn btn-primary">Créer</button>
+        {{ form_end(form) }}
+    </div>
+</div>
+</body>
