@@ -4,7 +4,7 @@
 namespace App\Form;
 
 
-class UserType
+class AdminType
 {
 
 }
