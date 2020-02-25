@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\Controller;
+namespace App\Controller\Post;
 
 use App\Entity\Post;
 use phpDocumentor\Reflection\DocBlock\Tags\Link;
@@ -12,26 +12,28 @@ use Symfony\Component\Form\SubmitButton;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use function Sodium\add;
 
-class BlogController extends AbstractController
+
+class PostController extends AbstractController
 {
     /**
      * @Route("/show/feed", name= "wellness_link_list")
      */
-    public function homepage(): Response
+    public function showPost(): Response
     {
 
         $entityManager = $this->getDoctrine()->getManager();
         $articles = $entityManager->getRepository(Post::class)->findAll();
 
-        return $this->render('home/linkPage.html.twig', array ('articles'=>$articles));
+        return $this->render('post/postLink.html.twig', array ('articles'=>$articles));
     }
 
     /**
      * @Route("links/create", name= "wellness_link_create")
+     * @param Request $request
+     * @return Response
      */
-    public function create(Request $request) : Response
+    public function createPost(Request $request) : Response
     {
         $link = new Link();
         $form = $this->createFormBuilder($link)
@@ -44,7 +46,7 @@ class BlogController extends AbstractController
         if ($form->isSubmitted()){
             dd($form);
         }
-        return $this->render(':home:create.html.twig',[
+        return $this->render(':post:createPost.html.twig',[
             'form' =>$form->createView()
         ]);
     }

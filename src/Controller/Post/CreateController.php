@@ -1,16 +1,19 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Post;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\PostType;
 use App\Entity\Post;
 
-class FormController extends AbstractController
+class CreateController extends AbstractController
 {
     /**
      * @Route("/form/new")
+     * @param Request $request
+     * @return Response
      */
     public function new(Request $request)
     {
@@ -26,7 +29,7 @@ class FormController extends AbstractController
             dump($article);
         }
 
-        return $this->render('form/new_post.html.twig', array(
+        return $this->render('post/createPost.html.twig', array(
             'form' => $form->createView(),
         ));
     }
