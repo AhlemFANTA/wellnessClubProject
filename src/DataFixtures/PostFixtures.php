@@ -9,10 +9,10 @@ class PostFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        for ($count = 0; $count < 20; $count++) {
+        for ($count = 0; $count < 5; $count++) {
             $article = new Post();
-            $article->setTitle("Titre". $count);
-            $article->setAuthor("wellnessClub Team");
+            $article->setTitle("Titre"." ". $count);
+            $article->setAuthor("Napoléon Bonaparte");
             $article->setContent("Je gagne mes batailles avec le rêve de mes soldats.");
             $article->setDate(new \DateTime('now'));
 

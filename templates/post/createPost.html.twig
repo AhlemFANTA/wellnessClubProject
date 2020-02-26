@@ -1,29 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
-<head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <title>Ajouter un article</title>
-</head>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <title>Ajouter un article</title>
+    </head>
 {% endblock %}
 
 {% block body %}
-<body>
-<div class="container">
-    <div class="row">
-        {{ form_start(form, {
-            'attr': {
-                'novalidate': 'novalidate',
-                'class': 'col-lg-5'
-            }
-        }) }}
+    <body>
 
-        {{ form_row(form.title) }}
-        {{ form_row(form.content) }}
-        {{ form_row(form.author) }}
+    <div class="container">
+        <div class="row">
+            {{ form_start(form, {
+                'attr': {
+                    'novalidate': 'novalidate',
+                    'class': 'col-lg-5'
+                }
+            }) }}
 
-        <button type="submit" class="btn btn-primary">Créer</button>
-        {{ form_end(form) }}
+            {{ form_row(form.title) }}
+            {{ form_row(form.content) }}
+            {{ form_row(form.author) }}
+
+            <button type="submit" class="btn btn-primary">Créer</button>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_end(form) }}
+
+        </div>
     </div>
-</div>
-</body>
+    </body>
 {% endblock %}
