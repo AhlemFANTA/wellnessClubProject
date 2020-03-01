@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Post;
 
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -8,29 +9,32 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Form\PostType;
 use App\Entity\Post;
 
-class CreateController extends AbstractController
+class CreatePostController extends AbstractController
 {
     /**
-     * @Route("/form/new")
+     * @Route("/new/post")
      * @param Request $request
      * @return Response
+     * @throws Exception
      */
-    public function new(Request $request)
+    public function createPost(Request $request)
     {
-        $article = new Post();
-        $article->setTitle('Citation');
-        $article->setContent('Je gagne mes batailles avec le rêve de mes soldats.');
-        $article->setAuthor('Napoléon Bonaparte');
-
-        $form = $this->createForm(PostType::class, $article);
+        $post = new Post();
+        $post->setDate(new \DateTime('now'));
+        $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($article);
-        }
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
+            $this->addFlash('success', 'Article Created! Knowledge is power!');
 
+        }
         return $this->render('post/createPost.html.twig', array(
             'form' => $form->createView(),
         ));
     }
+
+
 }
