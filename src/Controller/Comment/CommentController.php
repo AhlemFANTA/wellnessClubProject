@@ -27,7 +27,12 @@ class CommentController extends AbstractController
       $entityManager->persist($commentData);
       $entityManager->flush();
     };
+    // get all comments
+    $comments = $this->getDoctrine()
+    ->getRepository(Comment::class)
+    ->findAll();
+
     return $this->render('comment/commentBlock.html.twig',
-    array('id'=>$id, 'form'=>$form->createView()));
+    array('id'=>$id, 'form'=>$form->createView(), 'comments'=>$comments));
   }
 }

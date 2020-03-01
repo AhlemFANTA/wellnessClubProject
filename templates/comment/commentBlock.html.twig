@@ -12,4 +12,8 @@ Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate con
 <h4>Leave a comment</h4>
 {{ form(form) }}
 <h4>Comments</h4>
+{% for comment in comments %}
+      {{ comment.prenom }}&nbsp;{{ comment.nom}}<br />
+      {{ comment.content }}<br /><br />
+{% endfor %}
 {% endblock %}
