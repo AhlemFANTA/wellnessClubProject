@@ -13,7 +13,12 @@ Huic Arabia est conserta, ex alio latere Nabataeis contigua; opima varietate con
 {{ form(form) }}
 <h4>Comments</h4>
 {% for comment in comments %}
-      {{ comment.prenom }}&nbsp;{{ comment.nom}}<br />
-      {{ comment.content }}<br /><br />
+      <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
+      {{ comment.content }} ({{ comment.likes }} likes)
+      <br />
+      <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
+      <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Reply</a>
+
+      <br /><br />
 {% endfor %}
 {% endblock %}

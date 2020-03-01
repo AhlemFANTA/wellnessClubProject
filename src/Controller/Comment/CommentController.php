@@ -15,7 +15,8 @@ class CommentController extends AbstractController
   /**
    * @Route("/article/{id}", name= "get_comments")
    */
-  public function getComments(string $id, Request $request, CommentSubmitter $commentSubmitter): Response {
+  public function getComments(string $id, Request $request, CommentSubmitter $commentSubmitter): Response
+  {
     $comment = new Comment();
     $form = $this->createForm(CommentType::class, $comment);
     $form->handleRequest($request);
@@ -35,4 +36,17 @@ class CommentController extends AbstractController
     return $this->render('comment/commentBlock.html.twig',
     array('id'=>$id, 'form'=>$form->createView(), 'comments'=>$comments));
   }
+
+  /**
+   * @Route("/article/{id}/comment/{comment_id}/like")
+   */
+   public function likeComment(string $id, string $comment_id)
+   {
+     $entityManager = $this->getDoctrine()->getManager();
+     $comment = $entityManager->getRepository(Comment::class)->find($comment_id);
+     $likes = $comment->getLikes();
+     $comment->setLikes($likes+1);
+     $entityManager->flush();
+     return $this->redirectToRoute('get_comments', ['id'=>$id]);
+   }
 }

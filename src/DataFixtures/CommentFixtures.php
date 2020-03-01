@@ -15,7 +15,7 @@ class CommentFixtures extends Fixture
             $comment->setNom("Doe");
             $comment->setEmail("email@exemple.fr");
             $comment->setContent("Je deteste cet article.");
-
+            $comment->setLikes(2);
             $manager->persist($comment);
         }
         $manager->flush();

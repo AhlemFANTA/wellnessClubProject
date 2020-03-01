@@ -36,6 +36,11 @@ class Comment
      */
     private $content;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $likes;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,18 @@ class Comment
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getLikes(): ?int
+    {
+        return $this->likes;
+    }
+
+    public function setLikes(int $likes): self
+    {
+        $this->likes = $likes;
 
         return $this;
     }
