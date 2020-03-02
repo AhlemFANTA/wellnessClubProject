@@ -5,18 +5,43 @@
 <p>
 Vue d'article...
 </p>
-<h4>Leave a comment</h4>
-{{ form(submitForm) }}
 <h4>Comments</h4>
 {% for comment in comments %}
-      <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
-      {{ comment.content }} ({{ comment.likes }} likes)
-      <br />
-      <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
-      <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Repondre</a>
+      {% if comment.getParentId() == null %}
+        <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
+        &nbsp;&nbsp;{{ comment.content }}
+        &nbsp;&nbsp;
+        <a href="{{id}}/comment/{{comment.id}}/supprimer" style="color:red">
+          x
+        </a>
+        <br />
+        <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
+        ({{comment.likes}})
+        <a href="{{id}}/comment/{{comment.id}}/repondre" style="color:blue">Repondre</a>
+        <br /><br />
+
+      {% for subcomment in comments %}
+          {% if subcomment.getParentId() == comment.id %}
+            <b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ subcomment.prenom }}&nbsp;{{ subcomment.nom}}
+            </b>
+            &nbsp;&nbsp;
+            {{ subcomment.content }}
+            &nbsp;&nbsp;
+            <a href="{{id}}/comment/{{subcomment.id}}/supprimer" style="color:red">
+              x
+            </a>
+            <br />
+            <a href="{{id}}/comment/{{subcomment.id}}/like" style="color:blue">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Like
+            </a>({{subcomment.likes}})
+            <br /><br />
+          {% endif %}
+      {% endfor %}
       {% if comment.id == comment_id %}
         {{ form(repondreForm) }}
       {% endif %}
-      <br /><br />
+    {% endif %}
 {% endfor %}
+
 {% endblock %}
