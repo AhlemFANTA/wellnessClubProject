@@ -30,7 +30,6 @@ class CommentRepository extends ServiceEntityRepository
         FROM App\Entity\Comment comment
         WHERE comment.article_id = :article_id'
         )->setParameter('article_id', $article_id);
-
         return $query->getResult();
     }
 

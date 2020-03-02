@@ -5,9 +5,9 @@
 <p>
 Vue d'article...
 </p>
-<h4>Leave a comment</h4>
+<h4>Laisser un commentaire</h4>
 {{ form(submitForm) }}
-<h4>Comments</h4>
+<h4>Commentaires</h4>
 {% for comment in comments %}
       {% if comment.getParentId() == null and comment.getIsVisible() %}
         <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
