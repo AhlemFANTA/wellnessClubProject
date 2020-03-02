@@ -5,8 +5,6 @@
 <p>
 Vue d'article...
 </p>
-<h4>Leave a comment</h4>
-{{ form(submitForm) }}
 <h4>Comments</h4>
 {% for comment in comments %}
       {% if comment.getParentId() == null %}
@@ -40,6 +38,10 @@ Vue d'article...
             <br /><br />
           {% endif %}
       {% endfor %}
+      {% if comment.id == comment_id %}
+        {{ form(repondreForm) }}
       {% endif %}
+    {% endif %}
 {% endfor %}
+
 {% endblock %}
