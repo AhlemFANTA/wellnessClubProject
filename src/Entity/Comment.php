@@ -55,8 +55,19 @@ class Comment
      */
     private $parent_id;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $article_id;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $is_visible;
+
     public function __construct() {
      $this->setLikes(0);
+     $this->setIsVisible(1);
     }
 
     public function getId(): ?int
@@ -132,6 +143,30 @@ class Comment
     public function setParentId(?int $parent_id): self
     {
         $this->parent_id = $parent_id;
+
+        return $this;
+    }
+
+    public function getArticleId(): ?int
+    {
+        return $this->article_id;
+    }
+
+    public function setArticleId(int $article_id): self
+    {
+        $this->article_id = $article_id;
+
+        return $this;
+    }
+
+    public function getIsVisible(): ?bool
+    {
+        return $this->is_visible;
+    }
+
+    public function setIsVisible(bool $is_visible): self
+    {
+        $this->is_visible = $is_visible;
 
         return $this;
     }
