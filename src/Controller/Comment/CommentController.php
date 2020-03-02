@@ -33,7 +33,7 @@ class CommentController extends AbstractController
     // get all comments
     $comments = $this->getDoctrine()
     ->getRepository(Comment::class)
-    ->findAll();
+    ->findAllFromArticle($id);
 
     return $this->render('comment/commentBlock.html.twig',
     array('id'=>$id, 'submitForm'=>$form->createView(), 'comments'=>$comments));
@@ -73,10 +73,10 @@ class CommentController extends AbstractController
         unset($form);
         return $this->redirectToRoute('get_comments', ['id'=>$id]);
       };
-      // get all comments
+      // get all comments from that article
       $comments = $this->getDoctrine()
       ->getRepository(Comment::class)
-      ->findAll();
+      ->findAllFromArticle($id);
 
       return $this->render('comment/commentRepondre.html.twig',
       array('id'=>$id, 'comment_id'=>$comment_id, 'submitForm'=>$form->createView(), 'comments'=>$comments,
