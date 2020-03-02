@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class GetPostController extends AbstractController
 {
     /**
-     * @Route("/show/post", name= "wellness_post_list")
+     * @Route("/show/posts", name= "wellness_post_list")
      */
     public function showPost(): Response
     {
