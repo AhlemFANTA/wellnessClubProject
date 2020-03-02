@@ -9,7 +9,7 @@ Vue d'article...
 {{ form(submitForm) }}
 <h4>Comments</h4>
 {% for comment in comments %}
-      {% if comment.getParentId() == null %}
+      {% if comment.getParentId() == null and comment.getIsVisible() %}
         <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
         &nbsp;&nbsp;{{ comment.content }}
         &nbsp;&nbsp;
@@ -17,13 +17,13 @@ Vue d'article...
           x
         </a>
         <br />
-        <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
+        <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue; text-decoration:None">Like</a>
         ({{comment.likes}})
         <a href="{{id}}/comment/{{comment.id}}/repondre" style="color:blue">Repondre</a>
         <br /><br />
 
       {% for subcomment in comments %}
-          {% if subcomment.getParentId() == comment.id %}
+          {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
             <b>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ subcomment.prenom }}&nbsp;{{ subcomment.nom}}
             </b>
@@ -34,7 +34,7 @@ Vue d'article...
               x
             </a>
             <br />
-            <a href="{{id}}/comment/{{subcomment.id}}/like" style="color:blue">
+            <a href="{{id}}/comment/{{subcomment.id}}/like" style="color:blue; text-decoration:None">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Like
             </a>({{subcomment.likes}})
             <br /><br />

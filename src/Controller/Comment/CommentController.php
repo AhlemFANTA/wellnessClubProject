@@ -19,6 +19,7 @@ class CommentController extends AbstractController
   public function getComments(string $id, Request $request, CommentSubmitter $commentSubmitter): Response
   {
     $comment = new Comment();
+    $comment->setArticleId($id);
     $form = $this->createForm(CommentType::class, $comment);
     $form->handleRequest($request);
     if ($form->isSubmitted() && $form->isValid()) {
@@ -58,6 +59,7 @@ class CommentController extends AbstractController
     {
       $comment = new Comment();
       $comment->setParentId($comment_id);
+      $comment->setArticleId($id);
       $repondre = new Comment();
       $form = $this->createForm(CommentType::class, $comment);
       $repondreForm = $this->createForm(CommentType::class, $repondre);
@@ -65,10 +67,10 @@ class CommentController extends AbstractController
       if ($form->isSubmitted() && $form->isValid()) {
         // submit form data to database
         $commentData = $form->getData();
-
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($commentData);
         $entityManager->flush();
+        unset($form);
         return $this->redirectToRoute('get_comments', ['id'=>$id]);
       };
       // get all comments
@@ -89,8 +91,8 @@ class CommentController extends AbstractController
        $entityManager = $this->getDoctrine()->getManager();
        $comment = $this->getDoctrine()
        ->getRepository(Comment::class)
-       ->find($comment_id);
-       $entityManager->remove($comment);
+       ->find($comment_id)
+       ->setIsVisible(0);
        $entityManager->flush();
        return $this->redirectToRoute('get_comments', ['id'=>$id]);
      }
