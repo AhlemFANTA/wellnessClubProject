@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -18,21 +19,29 @@ class Comment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length( min = 1, max = 70, minMessage = "Il faut mettre un prenom",
+     * maxMessage = "Ce prenom est trop long")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 1, max = 70, minMessage = "Il faut mettre un nom",
+     * maxMessage = "Ce nom est trop long")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(min = 3, max = 70, minMessage = "Il faut mettre un email",
+     * maxMessage = "Cet email est trop long")
      */
     private $email;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min = 1, max = 255, minMessage = "Il faut mettre un commentaire",
+     * maxMessage = "Ce commentaire est trop longue")
      */
     private $content;
 
@@ -40,6 +49,11 @@ class Comment
      * @ORM\Column(type="integer")
      */
     private $likes;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $parent_id;
 
     public function __construct() {
      $this->setLikes(0);
@@ -106,6 +120,18 @@ class Comment
     public function setLikes(int $likes): self
     {
         $this->likes = $likes;
+
+        return $this;
+    }
+
+    public function getParentId(): ?int
+    {
+        return $this->parent_id;
+    }
+
+    public function setParentId(?int $parent_id): self
+    {
+        $this->parent_id = $parent_id;
 
         return $this;
     }

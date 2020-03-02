@@ -57,6 +57,7 @@ class CommentController extends AbstractController
     public function replyComment(string $id, string $comment_id, Request $request)
     {
       $comment = new Comment();
+      $comment->setParentId($comment_id);
       $repondre = new Comment();
       $form = $this->createForm(CommentType::class, $comment);
       $repondreForm = $this->createForm(CommentType::class, $repondre);
@@ -79,4 +80,18 @@ class CommentController extends AbstractController
       array('id'=>$id, 'comment_id'=>$comment_id, 'submitForm'=>$form->createView(), 'comments'=>$comments,
       'repondreForm'=>$repondreForm->createView()));
     }
+
+    /**
+     * @Route("/article/{id}/comment/{comment_id}/supprimer")
+     */
+     public function supprimerComment(string $id, string $comment_id, Request $request)
+     {
+       $entityManager = $this->getDoctrine()->getManager();
+       $comment = $this->getDoctrine()
+       ->getRepository(Comment::class)
+       ->find($comment_id);
+       $entityManager->remove($comment);
+       $entityManager->flush();
+       return $this->redirectToRoute('get_comments', ['id'=>$id]);
+     }
 }
