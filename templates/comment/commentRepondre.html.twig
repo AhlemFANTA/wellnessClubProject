@@ -13,8 +13,10 @@ Vue d'article...
       {{ comment.content }} ({{ comment.likes }} likes)
       <br />
       <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
-      <a href="{{id}}/comment/{{comment.id}}/repondre" style="color:blue">Repondre</a>
-      
+      <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue">Repondre</a>
+      {% if comment.id == comment_id %}
+        {{ form(repondreForm) }}
+      {% endif %}
       <br /><br />
 {% endfor %}
 {% endblock %}

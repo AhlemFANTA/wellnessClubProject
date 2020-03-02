@@ -41,6 +41,10 @@ class Comment
      */
     private $likes;
 
+    public function __construct() {
+     $this->setLikes(0);
+    }
+
     public function getId(): ?int
     {
         return $this->id;
