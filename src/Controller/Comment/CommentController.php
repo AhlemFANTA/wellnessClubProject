@@ -13,87 +13,96 @@ use App\Service\CommentSubmitter;
 
 class CommentController extends AbstractController
 {
-  /**
-   * @Route("/article/{id}", name= "get_comments")
-   */
-  public function getComments(string $id, Request $request, CommentSubmitter $commentSubmitter): Response
-  {
-    $comment = new Comment();
-    $comment->setArticleId($id);
-    $form = $this->createForm(CommentType::class, $comment);
-    $form->handleRequest($request);
-    if ($form->isSubmitted() && $form->isValid()) {
-      // submit form data to database
-      $commentData = $form->getData();
 
-      $entityManager = $this->getDoctrine()->getManager();
-      $entityManager->persist($commentData);
-      $entityManager->flush();
-    };
-    // get all comments
-    $comments = $this->getDoctrine()
-    ->getRepository(Comment::class)
-    ->findAllFromArticle($id);
+    /**
+     * @Route("/article/{id}/success", name= "successful_submit")
+     */
+    public function submitted(string $id): Response
+    {
+        return $this->render('comment/submittedComment.html.twig', array('id' => $id));
+    }
 
-    return $this->render('comment/commentBlock.html.twig',
-    array('id'=>$id, 'submitForm'=>$form->createView(), 'comments'=>$comments));
-  }
+    /**
+     * @Route("/article/{id}", name= "get_comments")
+     */
+    public function getComments(string $id, Request $request, CommentSubmitter $commentSubmitter): Response
+    {
+        $comment = new Comment();
+        $comment->setArticleId($id);
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // submit form data to database
+            $commentData = $form->getData();
 
-  /**
-   * @Route("/article/{id}/comment/{comment_id}/like")
-   */
-   public function likeComment(string $id, string $comment_id)
-   {
-     $entityManager = $this->getDoctrine()->getManager();
-     $comment = $entityManager->getRepository(Comment::class)->find($comment_id);
-     $likes = $comment->getLikes();
-     $comment->setLikes($likes+1);
-     $entityManager->flush();
-     return $this->redirectToRoute('get_comments', ['id'=>$id]);
-   }
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($commentData);
+            $entityManager->flush();
+        };
+        // get all comments
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findAllFromArticle($id);
 
-   /**
-    * @Route("/article/{id}/comment/{comment_id}/repondre")
-    */
+        return $this->render('comment/commentBlock.html.twig',
+            array('id' => $id, 'submitForm' => $form->createView(), 'comments' => $comments));
+    }
+
+    /**
+     * @Route("/article/{id}/comment/{comment_id}/like")
+     */
+    public function likeComment(string $id, string $comment_id)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $comment = $entityManager->getRepository(Comment::class)->find($comment_id);
+        $likes = $comment->getLikes();
+        $comment->setLikes($likes + 1);
+        $entityManager->flush();
+        return $this->redirectToRoute('get_comments', ['id' => $id]);
+    }
+
+    /**
+     * @Route("/article/{id}/comment/{comment_id}/repondre")
+     */
     public function replyComment(string $id, string $comment_id, Request $request)
     {
-      $comment = new Comment();
-      $comment->setParentId($comment_id);
-      $comment->setArticleId($id);
-      $repondre = new Comment();
-      $form = $this->createForm(CommentType::class, $comment);
-      $repondreForm = $this->createForm(CommentType::class, $repondre);
-      $form->handleRequest($request);
-      if ($form->isSubmitted() && $form->isValid()) {
-        // submit form data to database
-        $commentData = $form->getData();
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->persist($commentData);
-        $entityManager->flush();
-        unset($form);
-        return $this->redirectToRoute('get_comments', ['id'=>$id]);
-      };
-      // get all comments from that article
-      $comments = $this->getDoctrine()
-      ->getRepository(Comment::class)
-      ->findAllFromArticle($id);
+        $comment = new Comment();
+        $comment->setParentId($comment_id);
+        $comment->setArticleId($id);
+        $repondre = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $repondreForm = $this->createForm(CommentType::class, $repondre);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // submit form data to database
+            $commentData = $form->getData();
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($commentData);
+            $entityManager->flush();
+            unset($form);
+            return $this->redirectToRoute('get_comments', ['id' => $id]);
+        };
+        // get all comments from that article
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findAllFromArticle($id);
 
-      return $this->render('comment/commentRepondre.html.twig',
-      array('id'=>$id, 'comment_id'=>$comment_id, 'submitForm'=>$form->createView(), 'comments'=>$comments,
-      'repondreForm'=>$repondreForm->createView()));
+        return $this->render('comment/commentRepondre.html.twig',
+            array('id' => $id, 'comment_id' => $comment_id, 'submitForm' => $form->createView(), 'comments' => $comments,
+                'repondreForm' => $repondreForm->createView()));
     }
 
     /**
      * @Route("/article/{id}/comment/{comment_id}/supprimer")
      */
-     public function supprimerComment(string $id, string $comment_id, Request $request)
-     {
-       $entityManager = $this->getDoctrine()->getManager();
-       $comment = $this->getDoctrine()
-       ->getRepository(Comment::class)
-       ->find($comment_id)
-       ->setIsVisible(0);
-       $entityManager->flush();
-       return $this->redirectToRoute('get_comments', ['id'=>$id]);
-     }
+    public function supprimerComment(string $id, string $comment_id, Request $request)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $comment = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->find($comment_id)
+            ->setIsVisible(0);
+        $entityManager->flush();
+        return $this->redirectToRoute('get_comments', ['id' => $id]);
+    }
 }
