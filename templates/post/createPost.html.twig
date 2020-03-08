@@ -8,8 +8,8 @@
 
 {% block body %}
     <body>
-
     <div class="container">
+        <h1 class="text-primary" >Ajouter un nouveau article</h1>
         <div class="row">
             {{ form_start(form, {
                 'attr': {
@@ -17,7 +17,7 @@
                     'class': 'col-lg-5'
                 }
             }) }}
-
+            <br>
             {{ form_row(form.title) }}
             {{ form_row(form.content) }}
             {{ form_row(form.author) }}

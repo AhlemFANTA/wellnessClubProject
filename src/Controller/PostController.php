@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Post;
+namespace App\Controller;
 
 use Exception;
 use phpDocumentor\Reflection\Types\Integer;
