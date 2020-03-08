@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="post")
+ * @ORM\Table(name="blog_post")
  * */
 class Post
 {
@@ -119,6 +119,9 @@ class Post
     {
         $this->date = $date;
     }
+
+
+
 
 
 }
