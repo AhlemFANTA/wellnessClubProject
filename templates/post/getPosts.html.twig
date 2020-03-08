@@ -8,25 +8,38 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
+    <title></title>
 </head>
 {% endblock %}
 
 
 {% block body %}
 <body>
+
 <div class="container">
     <div class="well">
         <div class="media">
-            <div>
-                <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
-            </div>
+            <a class="pull-left" href="#">
+                <img class="media-object" src="{{ asset('build/expert.png') }}" alt="post img">
+            </a>
             <div class="media-body">
-                <h2 class="media-heading text-info">{{ article.title }}</p></h2>
-                <div class="text-body"><div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
-                <p class="text-right">By Ahlem</p>
-                <ul class="list-inline list-unstyled">
+                <div class="media-heading"><h1>Nos articles</h1></div>
+            </div>
+            <p class="text-right">l'équipe de WellnessClub</p>
+        </div>
+    {% for item in articles %}
+    <div class="well">
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src="http://placekitten.com/150/150">
+            </a>
+            <div class="media-body">
+                <article>
+                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.title }}</a></h1></div>
+                <p class="text-right">By Louma</p>
+                    <h3> {{ item.content[:60] ~ '...' }}</h3>
+                </article>
+               <ul class="list-inline list-unstyled">
                     <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
                     <li>|</li>
                     <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
@@ -49,8 +62,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
+     </div>
 </div>
-</div>
-</body>
-</html>
 {% endblock %}
