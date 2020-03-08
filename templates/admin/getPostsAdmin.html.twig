@@ -8,7 +8,6 @@
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
     <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
     <title></title>
 </head>
@@ -17,17 +16,29 @@
 
 {% block body %}
 <body>
+
 <div class="container">
     <div class="well">
         <div class="media">
-
-                <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
-
+                <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
+        </div>
             <div class="media-body">
-                <h2 class="media-heading text-info">{{ article.title }}</p></h2>
-                <div class="text-body"><div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
-                <p class="text-right">By Ahlem</p>
-                <ul class="list-inline list-unstyled">
+                <div class="media-heading"><h1>Nos articles</h1></div>
+            </div>
+
+
+    {% for item in articles %}
+    <div class="well">
+        <div class="media">
+            <img src="{{ asset('build/logo.png') }}" class="img-circle" alt="Cinque Terre" width="304"
+                 height="236">
+            <div class="media-body">
+                <article>
+                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.title }}</a></h1></div>
+                <p class="text-right">By Louma</p>
+                    <h3> {{ item.content[:60] ~ '...' }}</h3>
+                </article>
+               <ul class="list-inline list-unstyled">
                     <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
                     <li>|</li>
                     <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
@@ -50,8 +61,9 @@
             </div>
         </div>
     </div>
+    {% endfor %}
+        <h3><a href="{{ path('wellness_post_new') }}"><p class="text-right" style="color: #8959A8">Editer un nouveau article</p></a></h3>
+     </div>
+
 </div>
-</div>
-</body>
-</html>
 {% endblock %}
