@@ -1,54 +1,153 @@
-body {
-    background-color: lightgray;
-}
-.blogShort{ border-bottom:1px solid #ddd;}
-.add{background: #333; padding: 10%; height: 300px;}
+body{
+    font-family: "Helvetica Neue",sans-serif;
+    font-weight: lighter;
 
-.nav-sidebar {
+}
+header {
     width: 100%;
-    padding: 8px 0;
-    border-right: 1px solid #ddd;
+    height: 100vh;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
 }
-.nav-sidebar a {
-    color: #333;
-    -webkit-transition: all 0.08s linear;
-    -moz-transition: all 0.08s linear;
-    -o-transition: all 0.08s linear;
-    transition: all 0.08s linear;
-}
-.nav-sidebar .active a {
-    cursor: default;
-    background-color: #34ca78;
-    color: #fff;
-}
-.nav-sidebar .active a:hover {
-    background-color: #37D980;
-}
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
-    white-space: nowrap;
-    overflow: hidden;
-    -o-text-overflow: ellipsis;
-    text-overflow: ellipsis;
+img.media-object{
+    width: 100%;
 }
 
-.btn-blog {
-    color: #ffffff;
-    background-color: #37d980;
-    border-color: #37d980;
-    border-radius:0;
-    margin-bottom:10px
+.content {
+    width: 94%;
+    margin: 4em auto;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: justify;
 }
-.btn-blog:hover,
-.btn-blog:focus,
-.btn-blog:active,
-.btn-blog.active,
-.open .dropdown-toggle.btn-blog {
-    color: white;
-    background-color:#34ca78;
-    border-color: #34ca78;
+nav {
+    position: fixed;
+    width: 100%;
+    line-height: 60px;
 }
-article h2{color:#333333;}
-h2{color:#34ca78;}
-.margin10{margin-bottom:10px; margin-right:10px;}
+
+nav ul {
+    line-height: 60px;
+    list-style: none;
+    background: rgba(0, 0, 0, 0);
+    overflow: hidden;
+    color: darkgray;
+    text-align: right;
+    margin: 0;
+    padding: 0 40px 0 0;
+    transition: 1s;
+}
+
+nav.black ul {
+    background: #000;
+}
+
+nav ul li {
+    display: inline-block;
+    padding: 16px 40px;;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 22px;
+}
+
+
+@media(max-width: 786px) {
+
+    .logo {
+        background: url("../images/logo.png") no-repeat 50% 50%;
+        margin-left: 0;
+        position: fixed;
+        padding-top: 3%;
+        margin-top: 16px;
+    }
+
+    nav ul {
+        max-height: 0px;
+        background: #000;
+    }
+
+    nav.black ul {
+        background: #000;
+    }
+
+    .showing {
+        max-height: 40em;
+    }
+
+    nav ul li {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 24px;
+        text-align: center;
+    }
+    article h2{
+        color:#333333;
+        padding-top: 5%;
+    }
+
+    h2{color:#34ca78;}
+    .img-circle{
+        padding-top: 10%;
+    }
+    .margin10{margin-bottom:10px; margin-right:10px;}
+    .menu-icon {
+        display: block;
+    }
+    .media-body{
+        padding-top:24px; ;
+    }
+    .blogShort{ border-bottom:1px solid #ddd;}
+    .add{background: #333; padding: 10%; height: 300px;}
+
+    .nav-sidebar {
+        width: 100%;
+        padding: 8px 0;
+        border-right: 1px solid #ddd;
+    }
+    .nav-sidebar a {
+        color: #333;
+        -webkit-transition: all 0.08s linear;
+        -moz-transition: all 0.08s linear;
+        -o-transition: all 0.08s linear;
+        transition: all 0.08s linear;
+    }
+    .nav-sidebar .active a {
+        cursor: default;
+        background-color: #34ca78;
+        color: #fff;
+    }
+    .nav-sidebar .active a:hover {
+        background-color: #37D980;
+    }
+    .nav-sidebar .text-overflow a,
+    .nav-sidebar .text-overflow .media-body {
+        white-space: nowrap;
+        overflow: hidden;
+        -o-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+    }
+
+    .btn-blog {
+        color: #ffffff;
+        background-color: #37d980;
+        border-color: #37d980;
+        border-radius:0;
+        margin-bottom:10px
+    }
+    .btn-blog:hover,
+    .btn-blog:focus,
+    .btn-blog:active,
+    .btn-blog.active,
+    .open .dropdown-toggle.btn-blog {
+        color: white;
+        background-color:#34ca78;
+        border-color: #34ca78;
+    }
+
+
+
+}
 
