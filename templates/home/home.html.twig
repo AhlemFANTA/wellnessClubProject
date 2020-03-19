@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+{{ parent() }}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+{% endblock %}
+{% block body %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link href="{{ asset('build/home.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('build/home.js') }}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <nav>
+            <div class="menu-icon">
+                <i class="fa fa-bars fa-2x"></i>
+            </div>
+            <div>
+
+            <div class="menu">
+                <ul>
+                    <a class="pull-left" href="#">
+                    <img src="{{ asset('build/logo.png') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
+                    </a>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="http://127.0.0.1:8000/show/posts">Blog</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/posts/show">Admin</a></li>
+                 </ul>
+            </div>
+            </div>
+        </nav>
+    </header>
+    <div class="content">
+        <h1>Envie d’un moment de détente ?</h1>
+        <p>
+            Je vous propose des articles sur des thèmes riches et variés tels que la beauté (parfums, soins, routines…) mais aussi le bien-être (décoration, méditation, aroma, healthy food…).
+            Un Club Lecture est également à votre disposition si tu vous avez envie de découvrir de nouveaux livres de développement personnel  !
+
+            Vous trouverez aussi sur ce blog le concept des Happy Letters pour créer du lien et envoyer du bonheur ! Passionnée par les plantes je partage également mes découvertes et mes conseils pour débuter et avoir la main verte !
+        </p>Bonne visite ! <br> l'équipe de WellnessClub
+        </p>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

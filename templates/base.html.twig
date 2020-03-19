@@ -3,7 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome to wellnessClub!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% block stylesheets %}
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        {% endblock %}
+        <style>
+          form {
+            width: 30%;
+          }
+          body {
+            margin: 30px;
+          }
+        </style>
     </head>
     <body>
         {% block body %}{% endblock %}

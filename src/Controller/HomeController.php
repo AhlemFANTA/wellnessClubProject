@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController {
+class HomeController extends AbstractController {
 
     /**
      * @Route("/", name="wellness_homepage")
      */
-    public function homepage(){
-        return new Response('<html><body>Hi, welcome to wellnessClub.fr!</body></html>');
+    public function homepage(): Response{
+        return $this->render('home/home.html.twig');
     }
 
     /**
