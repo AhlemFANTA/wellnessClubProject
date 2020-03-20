@@ -1,0 +1,9 @@
+{
+  "build/app.css": "/build/app.css",
+  "build/app.js": "/build/app.js",
+  "build/runtime.js": "/build/runtime.js",
+  "build/background.jpg": "/build/background.jpg",
+  "build/logo.png": "/build/logo.png",
+  "build/nutrition.jpg": "/build/nutrition.jpg",
+  "build/wellness.jpg": "/build/wellness.jpg"
+}
