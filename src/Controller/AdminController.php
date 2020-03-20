@@ -40,6 +40,21 @@ class AdminController extends AbstractController
     }
 
     /**
+     * @Route("/admin/supprimer/post/{id}",name= "admin_supprimer_post")
+     * @param Request $request
+     * @return Response
+     * @throws Exception
+     */
+    public function supprimerPost(string $id, Request $request)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $post = $em->getRepository(Post::class)->find($id);
+      $em->remove($post);
+      $em->flush();
+      return $this->redirectToRoute('wellness_posts_list');
+    }
+
+    /**
      * @Route("/admin/modify/post/{id}",name= "admin_modify_post")
      * @param Request $request
      * @param string $id
