@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Form\PostType;
 use App\Entity\Post;
+use App\Entity\Comment;
 
 
 class AdminController extends AbstractController
@@ -38,6 +39,44 @@ class AdminController extends AbstractController
         ));
     }
 
+    /**
+     * @Route("/admin/modify/post/{id}",name= "admin_modify_post")
+     * @param Request $request
+     * @param string $id
+     * @return Response
+     */
+    public function modifyPost(string $id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $article = $em->getRepository(Post::class)->find($id);
+
+        if (!$article) {
+          throw $this->createNotFoundException(
+            'No post found for id '.$id
+          );
+        };
+
+        $form = $this->createForm(PostType::class, $article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $article->setTitle($form["title"]->getData());
+            $article->setContent($form["content"]->getData());
+            $article->setAuthor($form["author"]->getData());
+            $em->flush();
+            $this->addFlash('success', 'Article was updated successfully!');
+        };
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findAllFromArticle($id);
+
+        return $this->render('admin/modifyPost.html.twig', array(
+            'form' => $form->createView(),
+            'article' => $article,
+            'comments' => $comments,
+            'id' => $id
+        ));
+    }
 
     /**
      * @Route("/admin/posts/show", name= "wellness_posts_list")
@@ -53,18 +92,18 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/get/post/{id}", name= "wellness_post")
-     * @param $id
-     * @return Response
+     * @Route("admin/modify/post/{id}/comment/{comment_id}/supprimer")
      */
-    public function getPost($id): Response
+    public function supprimerComment(string $id, string $comment_id, Request $request)
     {
-
         $entityManager = $this->getDoctrine()->getManager();
-        $article = $entityManager->getRepository(Post::class)->find($id);
-
-        return $this->render('post/getPost.html.twig', array('article' => $article));
+        $comment = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->find($comment_id)
+            ->setIsVisible(0);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin_modify_post',
+        ['id' => $id]);
     }
-
 
 }

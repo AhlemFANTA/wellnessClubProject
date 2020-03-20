@@ -21,7 +21,7 @@ class CommentType extends AbstractType
       ->add('nom', TextType::class)
       ->add('email', TextType::class)
       ->add('content', TextareaType::class)
-      ->add('save', SubmitType::class)
+      ->add('submit', SubmitType::class)
     ;
   }
 

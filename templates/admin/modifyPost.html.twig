@@ -1,13 +1,17 @@
 {% extends "base.html.twig" %}
 {% block stylesheets %}
     {{ parent() }}
-
+    <!doctype html>
+<html lang="fr">
+<head>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
     <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
     <title></title>
+</head>
 {% endblock %}
 
 
@@ -16,30 +20,12 @@
 <div class="container">
     <div class="well">
         <div class="media">
-                <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
-        </div>
-        <div style="text-align:center">
-          <a href="{{ path('wellness_post_new') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"
-          style="margin: 20px; background-color: green">
-            + Creer
-          </a>
-        </div>
-        <div class="media-body">
-            <div class="media-heading"><h1>Nos articles</h1></div>
-        </div>
 
-    {% for item in articles %}
-    <div class="well">
-        <div class="media">
-            <img src="{{ asset('build/logo.png') }}" class="img-circle" alt="Cinque Terre" width="304"
-                 height="236">
+                <img src="{{ asset('build/nutrition.jpg') }}" style="padding-right:20px" class="img-circle" alt="Cinque Terre" width="304" height="236">
+
             <div class="media-body">
-                <article>
-                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.title }}</a></h1></div>
-                <p class="text-right">By Louma</p>
-                    <h3> {{ item.content[:60] ~ '...' }}</h3>
-                </article>
-               <ul class="list-inline list-unstyled">
+                {{ form(form) }}
+                <ul class="list-inline list-unstyled">
                     <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
                     <li>|</li>
                     <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
@@ -59,19 +45,12 @@
                         <span><i class="fa fa-google-plus-square"></i></span>
                     </li>
                 </ul>
-                <a href="{{ path('admin_modify_post', {'id' : item.id }) }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true" style="margin: 10px">
-                Modifier
-                </a>
-
-                <a href="#" class="btn btn-primary btn-lg" role="button" aria-disabled="true"
-                style="margin: 10px">
-                Supprimer
-                </a>
             </div>
         </div>
     </div>
-    {% endfor %}
-     </div>
-
 </div>
+</div>
+{% include 'comment/commentsViewOnly.html.twig' %}
+</body>
+</html>
 {% endblock %}
