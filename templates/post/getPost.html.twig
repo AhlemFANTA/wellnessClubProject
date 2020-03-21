@@ -1,8 +1,7 @@
-{% extends "base.html.twig" %}
-{% block stylesheets %}
+{% extends 'base.html.twig' %}
+{% block head %}
     {{ parent() }}
-    <!doctype html>
-<html lang="fr">
+{% block stylesheets %}
 <head>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -13,13 +12,12 @@
     <title></title>
 </head>
 {% endblock %}
-
+{% endblock %}
 
 {% block body %}
-<body>
 <div class="container">
     <div class="well">
-        <div class="media">
+        <div class="media" style="padding-top: 12%">
 
                 <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
 
@@ -52,6 +50,4 @@
     </div>
 </div>
 </div>
-</body>
-</html>
 {% endblock %}
