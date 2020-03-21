@@ -1,7 +1,8 @@
-{% extends 'base.html.twig' %}
-{% block head %}
-    {{ parent() }}
+{% extends "base.html.twig" %}
 {% block stylesheets %}
+    {{ parent() }}
+    <!doctype html>
+<html lang="fr">
 <head>
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -12,19 +13,20 @@
     <title></title>
 </head>
 {% endblock %}
-{% endblock %}
+
 
 {% block body %}
+<body>
 <div class="container">
     <div class="well">
-        <div class="media" style="padding-top: 12%">
+        <div class="media">
 
                 <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
 
             <div class="media-body">
                 <h2 class="media-heading text-info">{{ article.title }}</p></h2>
                 <div class="text-body"><div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
-                <p class="text-right">By {{ article.author }}</p>
+                <p class="text-right">By Ahlem</p>
                 <ul class="list-inline list-unstyled">
                     <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
                     <li>|</li>
@@ -55,4 +57,6 @@
 {% else %}
   {% include 'comment/commentBlock.html.twig' %}
 {% endif %}
+</body>
+</html>
 {% endblock %}

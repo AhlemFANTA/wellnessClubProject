@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
-<h4>Laisser un commentaire</h4>
-{{ form(submitForm) }}
 <h4>Commentaires</h4>
 {% for comment in comments %}
       {% if comment.getParentId() == null and comment.getIsVisible() %}
@@ -12,10 +11,7 @@
           x
         </a>
         <br />
-        <a href="{{id}}/comment/{{comment.id}}/like" style="color:blue; text-decoration:None">Like</a>
-        ({{comment.likes}})
-        &nbsp;&nbsp;
-        <a href="{{id}}/comment/{{comment.id}}/repondre" style="color:blue">Repondre</a>
+        ({{comment.likes}} likes)
         <br /><br />
 
       {% for subcomment in comments %}
@@ -30,9 +26,8 @@
               x
             </a>
             <br />
-            <a href="{{id}}/comment/{{subcomment.id}}/like" style="color:blue; text-decoration:None">
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Like
-            </a>({{subcomment.likes}})
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ({{subcomment.likes}} likes)
             &nbsp;&nbsp;
             <br /><br />
           {% endif %}
