@@ -6,7 +6,7 @@ Ce Blog comprend les services suivants:
 - Modification d'un article,
 - Suppression d'un article,
 - Commenter un article,
-- Répondre sur un commentaire,
+- Répondre à un commentaire,
 - Supprimer un commentaire,
 - Envoyer un email via le formulaire de contact,
 - Se connecter entant qu'Admin,
@@ -19,13 +19,17 @@ La couche persistance utilisee le SGBD MySQL.
 # II - Lancement
 
 ## 1. Prérequis
+- Installer les dépendences du projet en utilisant la commande suivante :
+    - composer install
+    
 - Créer la base de données MySQL en utilisant les commandes suivantes :
+	- php bin/console doctrine:database:create
+	- php bin/console doctrine:schema:create
+	- php bin/console doctrine:schema:update --force
+	- php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction
 
-	 php bin/console doctrine:database:create
-	 php bin/console doctrine:schema:create
-	 php bin/console doctrine:schema:update --force
-	 php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction
-	 php bin/console make:migration
+- Compiler assets et générer le dossier build en utilisant la commande suivante :
+    -  yarn encore dev
 
 
 ## 2. Exécution du service
