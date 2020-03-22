@@ -16,11 +16,17 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("/salut/{toi}")
+     * @Route("/about",  name="wellness_about")
      */
-    public function hello($toi) {
-        return new Response('<html><body>Hello '.$toi.'</body></html>');
+    public function about(): Response{
+        return $this->render('home/about.html.twig');
     }
 
+    /**
+     * @Route("/contact",  name="wellness_contact")
+     */
+    public function contact(): Response{
+        return $this->render('home/contact.html.twig');
+    }
 
 }

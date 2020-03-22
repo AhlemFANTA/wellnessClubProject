@@ -14,15 +14,14 @@
 </head>
 {% endblock %}
 
-
 {% block body %}
 <body>
 <div class="container">
     <div class="well">
-        <div class="media">
+        <div class="media" style="padding-top: 12%">
 
-                <img src="{{ asset('build/nutrition.jpg') }}" style="padding-right:20px" class="img-circle" alt="Cinque Terre" width="304" height="236">
-
+            <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
+                 height="236">
             <div class="media-body">
                 {{ form(form) }}
                 {% for message in app.flashes('success') %}
@@ -52,10 +51,11 @@
                 </ul>
             </div>
         </div>
-    </div>
-</div>
-</div>
+<br><br><br>
 {% include 'comment/commentsViewOnly.html.twig' %}
+</div>
+</div>
+</div>
 </body>
 </html>
 {% endblock %}

@@ -13,7 +13,6 @@
 {% endblock %}
 
 {% block body %}
-<body>
 <div class="container"  >
     <div class="well">
         <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
@@ -32,10 +31,10 @@
                     <div class="media-body">
                         <article>
                             <div class="media-heading"><h1><a
-                                            href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.title }}</a></h1>
+                                            href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.titre }}</a></h1>
                             </div>
                             <p class="text-right">By Louma</p>
-                            <h3> {{ item.content[:80] ~ '...' }}</h3>
+                            <h3> {{ item.contenu[:80] ~ '...' }}</h3>
                         </article>
                         <ul class="list-inline list-unstyled">
                             <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>

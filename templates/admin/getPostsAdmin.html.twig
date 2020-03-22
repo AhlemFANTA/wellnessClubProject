@@ -21,23 +21,23 @@
         <div style="text-align:center">
           <a href="{{ path('wellness_post_new') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"
           style="margin: 20px; background-color: green">
-            + Creer
+            + Ajouter un nouveau article
           </a>
         </div>
         <div class="media-body">
-            <div class="media-heading"><h1>Nos articles</h1></div>
+            <div class="media-heading"><h1 style="text-align: center">Bienvenue Admin</h1></div>
         </div>
 
     {% for item in articles %}
     <div class="well">
         <div class="media">
             <img src="{{ asset('build/logo.png') }}" class="img-circle" alt="Cinque Terre" width="304"
-                 height="236">
+                 height="200">
             <div class="media-body">
                 <article>
-                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.title }}</a></h1></div>
-                <p class="text-right">By {{item.author}}</p>
-                    <h3> {{ item.content[:60] ~ '...' }}</h3>
+                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.titre }}</a></h1></div>
+                <p class="text-right">By {{item.auteur}}</p>
+                    <h3> {{ item.contenu[:60] ~ '...' }}</h3>
                 </article>
                <ul class="list-inline list-unstyled">
                     <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
@@ -63,7 +63,7 @@
                 Modifier
                 </a>
 
-                <a href="{{ path('admin_supprimer_post', {'id' : item.id}) }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"
+                <a href="{{ path('admin_supprimer_post', {'id' : item.id}) }}" class="btn btn-danger btn-lg" role="button" aria-disabled="true"
                 style="margin: 10px">
                 Supprimer
                 </a>
