@@ -1,19 +1,29 @@
 # I - Description
-Mission : Développement d'un blog de bien être ; conseils, actualités, articles ...
+###Mission : 
 
-Ce Blog comprend les services suivants:
-- Ajout d'un nouveau article,
-- Modification d'un article,
-- Suppression d'un article,
-- Commenter un article,
+Développement d'un blog de bien-être administré par les modérateurs de l'entreprise **Symfeed**.
+
+*Ce blog est implémenté en langage de programmation PHP avec le Framewok Symfony 5   
+ORM : Doctrine  
+SGBD : MySQL 8.0.18  
+Test : Fixtures*
+
+__Ce projet contient 4 fonctionnalités développées par 4 développeurs__ :
+- Ahlem : gestion des articles (CRUD + affichage + Tests),
+- Kim :   gestion des commentaires (CRUD + affichage + Tests),
+- Ayoub : gestion du système d'envoi de mail (avec le composant mailer de Symfony),
+- Adiel : gestion du compte Admin.
+
+__Le Blog comprend les services suivants:__
+- Lire les articles du blog
+- Commenter un ou plusieurs articles,
 - Répondre à un commentaire,
-- Supprimer un commentaire,
-- Envoyer un email via le formulaire de contact,
-- Se connecter entant qu'Admin,
-- Changement de mot de passe, etc..
-
-Ce blog est implémenté en langage de programmation PHP avec le Framewok Symfony 5.
-La couche persistance utilisee le SGBD MySQL.
+- Supprimer son commentaire,
+- Contacter l'administrateur via le formulaire de contact,
+- Se connecter entant qu'Admin, et donc avoir en plus les privilèges suivants : 
+  - Ajouter un nouveau article,
+  - Modifier un article,
+  - Supprimer un article.
 
 
 # II - Lancement
