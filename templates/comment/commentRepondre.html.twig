@@ -1,8 +1,7 @@
-{% block stylesheets %}
-     <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-{% endblock %}
+{% extends 'base.html.twig' %}
+
 {% block body %}
-<h2 class="replay">Commentaires</h2>
+<h4>Commentaires</h4>
 {% for comment in comments %}
       {% if comment.getParentId() == null and comment.getIsVisible() %}
         <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
@@ -38,10 +37,8 @@
           {% endif %}
       {% endfor %}
       {% if comment.id == comment_id %}
-          <div>
-              {{ form(repondreForm) }}
-              <button id = "commentAn" style="color: red" onclick="window.location.href='/get/post/{{ id }}';">Annuler</button>
-          </div>
+        {{ form(repondreForm) }}
+        <a href="/get/post/{{id}}" style="color: red"> Annuler </a>
         <br /> <br /><br />
       {% endif %}
     {% endif %}

@@ -1,10 +1,9 @@
-{% block stylesheets %}
-  <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-{% endblock %}
+{% extends 'base.html.twig' %}
+
 {% block body %}
-<h2>Laisser un commentaire</h2>
+<h4>Laisser un commentaire</h4>
 {{ form(submitForm) }}
-<h2>Commentaires</h2>
+<h4>Commentaires</h4>
 {% for comment in comments %}
       {% if comment.getParentId() == null and comment.getIsVisible() %}
         <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
