@@ -1,0 +1,38 @@
+{% block stylesheets %}
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<h2>Commentaires</h2>
+{% for comment in comments %}
+      {% if comment.getParentId() == null and comment.getIsVisible() %}
+        <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
+        &nbsp;&nbsp;{{ comment.content }}
+        &nbsp;&nbsp;
+        <a href="{{id}}/comment/{{comment.id}}/supprimer" style="color:red">
+          x
+        </a>
+        <br />
+        ({{comment.likes}} likes)
+        <br /><br />
+
+      {% for subcomment in comments %}
+          {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
+            <b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ subcomment.prenom }}&nbsp;{{ subcomment.nom}}
+            </b>
+            &nbsp;&nbsp;
+            {{ subcomment.content }}
+            &nbsp;&nbsp;
+            <a href="{{id}}/comment/{{subcomment.id}}/supprimer" style="color:red">
+              x
+            </a>
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            ({{subcomment.likes}} likes)
+            &nbsp;&nbsp;
+            <br /><br />
+          {% endif %}
+      {% endfor %}
+    {% endif %}
+{% endfor %}
+{% endblock %}

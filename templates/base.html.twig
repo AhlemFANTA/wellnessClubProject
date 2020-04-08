@@ -1,12 +1,119 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to wellnessClub!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+
+<head>
+<meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+    {% block title %} <title> Welcome to wellnessClub! </title>{% endblock %}
+     <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+                  <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+        <link rel="stylesheet" href="{{asset('public\css\app.css')}}" >
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    {% block stylesheets %}
+        <style>
+            body {
+                font-family: "Helvetica Neue", sans-serif;
+                font-weight: lighter;
+            }
+            header {
+                background: url(public/build/background.jpg) no-repeat 50% 50%;
+                background-size: cover;
+            }
+            nav {
+                width: 100%;
+                line-height: 60px;
+            }
+            nav ul {
+                line-height: 60px;
+                list-style: none;
+                overflow: hidden;
+                background-color: #5eb5e0;
+                text-align: right;
+                margin: 0;
+                padding: 0 40px 0 0;
+                transition: 1s;
+            }
+            nav.black ul {
+                background: #000;
+            }
+            nav ul li {
+                display: inline-block;
+                padding: 16px 40px;;
+            }
+            nav ul li a {
+                text-decoration: none;
+                color: #fff;
+                font-size: 16px;
+            }
+            @media (max-width: 786px) {
+                nav ul {
+                    max-height: 0px;
+                    background: #000;
+                }
+                nav.black ul {
+                    background: #000;
+                }
+                nav ul li {
+                    box-sizing: border-box;
+                    width: 100%;
+                    padding: 10px;
+                    text-align: center;
+                }
+            }
+            footer{
+                background-color: black;
+
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+        </style>
+    {% endblock %}
+</head>
+    <header>
+        <nav class="menu">
+            <div>
+                <ul>
+                    <a class="pull-left" href="#">
+                        <img src="{{ asset('build//logo.png') }}" class="img-circle" alt="Cinque Terre"
+                             width="150" height="100">
+                    </a>
+                    <li><a href="http://127.0.0.1:8000">Home</a></li>
+                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                    <li><a href="http://127.0.0.1:8000/show/posts">Blog</a></li>
+                    <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/posts/show">Login</a></li>
+                </ul>
+            </div>
+        </nav>
+    
+    </header>
+   
+
+   
+
+{% block body %}
+{% endblock %}
+
+ {% block footer %}
+    <!-- Footer -->
+    <footer >
+        <!-- Copyright -->
+        <div class=" text-center py-3">
+     © 2020 Copyright:
+   <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>
+
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+
+{% endblock %}
 </html>

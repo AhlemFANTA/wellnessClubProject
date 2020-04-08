@@ -1,0 +1,77 @@
+{% extends "base.html.twig" %}
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
+    <title></title>
+{% endblock %}
+
+
+{% block body %}
+<body>
+<div class="container">
+    <div class="well">
+        <div class="media">
+                <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
+        </div>
+        <div style="text-align:center">
+          <a href="{{ path('wellness_post_new') }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true"
+          style="margin: 20px; background-color: green">
+            + Ajouter un nouveau article
+          </a>
+        </div>
+        <div class="media-body">
+            <div class="media-heading"><h1 style="text-align: center">Bienvenue Admin</h1></div>
+        </div>
+
+    {% for item in articles %}
+    <div class="well">
+        <div class="media">
+            <img src="{{ asset('build/logo.png') }}" class="img-circle" alt="Cinque Terre" width="304"
+                 height="200">
+            <div class="media-body">
+                <article>
+                <div class="media-heading"><h1><a href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.titre }}</a></h1></div>
+                <p class="text-right">By {{item.auteur}}</p>
+                    <h3> {{ item.contenu[:60] ~ '...' }}</h3>
+                </article>
+               <ul class="list-inline list-unstyled">
+                    <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                    <li>|</li>
+                    <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                    <li>|</li>
+                    <li>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star"></span>
+                        <span class="glyphicon glyphicon-star-empty"></span>
+                    </li>
+                    <li>|</li>
+                    <li>
+                        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                        <span><i class="fa fa-facebook-square"></i></span>
+                        <span><i class="fa fa-twitter-square"></i></span>
+                        <span><i class="fa fa-google-plus-square"></i></span>
+                    </li>
+                </ul>
+                <a href="{{ path('admin_modify_post', {'id' : item.id }) }}" class="btn btn-primary btn-lg" role="button" aria-disabled="true" style="margin: 10px">
+                Modifier
+                </a>
+
+                <a href="{{ path('admin_supprimer_post', {'id' : item.id}) }}" class="btn btn-danger btn-lg" role="button" aria-disabled="true"
+                style="margin: 10px">
+                Supprimer
+                </a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+     </div>
+
+</div>
+{% endblock %}

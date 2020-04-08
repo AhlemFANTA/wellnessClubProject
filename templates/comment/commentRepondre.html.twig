@@ -1,0 +1,50 @@
+{% block stylesheets %}
+     <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<h2 class="replay">Commentaires</h2>
+{% for comment in comments %}
+      {% if comment.getParentId() == null and comment.getIsVisible() %}
+        <b>{{ comment.prenom }}&nbsp;{{ comment.nom}}</b>
+        &nbsp;&nbsp;
+        {{ comment.content }}
+        &nbsp;&nbsp;
+        <a href="{{id}}/comment/{{comment.id}}/supprimer" style="color:red">x</a>
+        <br />
+        <a href="/get/post/{{id}}/comment/{{comment.id}}/like" style="color:blue">Like</a>
+        ({{comment.likes}})
+        &nbsp;&nbsp;
+        <a href="/get/post/{{id}}/comment/{{comment.id}}/repondre" style="color:blue; text-decoration:None">Repondre</a>
+        <br /><br />
+
+      {% for subcomment in comments %}
+          {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
+            <b>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              {{ subcomment.prenom }}&nbsp;{{ subcomment.nom}}
+            </b>
+            &nbsp;&nbsp;
+            {{ subcomment.content }}
+            &nbsp;&nbsp;
+            <a href="/get/post/{{id}}/comment/{{subcomment.id}}/supprimer" style="color:red">
+              x
+            </a>
+            <br />
+            <a href="/get/post/{{id}}/comment/{{subcomment.id}}/like" style="color:blue; text-decoration:None">
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Like
+            </a>({{subcomment.likes}})
+            &nbsp;&nbsp;
+            <br /><br />
+          {% endif %}
+      {% endfor %}
+      {% if comment.id == comment_id %}
+          <div>
+              {{ form(repondreForm) }}
+              <button id = "commentAn" style="color: red" onclick="window.location.href='/get/post/{{ id }}';">Annuler</button>
+          </div>
+        <br /> <br /><br />
+      {% endif %}
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
