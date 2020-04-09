@@ -10,15 +10,18 @@
                 font-family: "Helvetica Neue", sans-serif;
                 font-weight: lighter;
             }
+
             header {
                 background: url(public/build/background.jpg) no-repeat 50% 50%;
                 background-size: cover;
             }
+
             nav {
                 position: fixed;
                 width: 100%;
                 line-height: 60px;
             }
+
             nav ul {
                 line-height: 60px;
                 list-style: none;
@@ -29,26 +32,32 @@
                 padding: 0 40px 0 0;
                 transition: 1s;
             }
+
             nav.black ul {
                 background: #000;
             }
+
             nav ul li {
                 display: inline-block;
                 padding: 16px 40px;;
             }
+
             nav ul li a {
                 text-decoration: none;
                 color: #fff;
                 font-size: 16px;
             }
+
             @media (max-width: 786px) {
                 nav ul {
                     max-height: 0px;
                     background: #000;
                 }
+
                 nav.black ul {
                     background: #000;
                 }
+
                 nav ul li {
                     box-sizing: border-box;
                     width: 100%;
@@ -56,7 +65,8 @@
                     text-align: center;
                 }
             }
-            footer{
+
+            footer {
                 background-color: #5eb5e0;
                 position: fixed;
                 left: 0;
@@ -82,7 +92,7 @@
                     <li><a href="http://127.0.0.1:8000/about">About</a></li>
                     <li><a href="http://127.0.0.1:8000/show/posts">Blog</a></li>
                     <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
-                    <li><a href="http://127.0.0.1:8000/admin/posts/show">Login</a></li>
+                    <li><a href="http://127.0.0.1:8000/admin/posts/show">Accéder à mon espace</a></li>
                 </ul>
             </div>
         </nav>
@@ -94,7 +104,7 @@
 
 {% block footer %}
     <!-- Footer -->
-    <footer >
+    <footer>
         <!-- Copyright -->
         <div class=" text-center py-3">© 2020 Copyright:
             <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>

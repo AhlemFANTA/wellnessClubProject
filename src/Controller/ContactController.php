@@ -22,24 +22,24 @@ class ContactController extends AbstractController
             $contactFormData = $form->getData();
 
             $message = (new \Swift_Message('You Got Mail from your blog !'))
-                ->setSubject($contactFormData['subject'])
-                ->setFrom($contactFormData['fromEmail'])
+                ->setSubject($contactFormData['Sujet'])
+                ->setFrom($contactFormData['Email'])
                 ->setTo('benkhadajmiaga2020@gmail.com')
                 ->setBody(
-                    $contactFormData['message'],
+                    $contactFormData['Message'],
                     'text/plain'
                 )
             ;
 
             $mailer->send($message);
 
-            $this->addFlash('success', 'Message was send');
+            $this->addFlash('success', ' Votre message est envoyé avec succès');
             
             return $this->redirectToRoute('contact');
 
         }
 
-        return $this->render('contact\index.html.twig', [
+        return $this->render('contact\contact.html.twig', [
             'email_form' => $form->createView(),
         ]);
     }
