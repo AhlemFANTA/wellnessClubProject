@@ -1,16 +1,40 @@
 <?php
 
 namespace App\DataFixtures;
-
-use App\Entity\Comment;
+use Faker\Factory;
 use App\Entity\Post;
+use App\Entity\User;
+use App\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PostCommentFixtures extends Fixture
 {
+    private $encoder;
+    public function __construct(UserPasswordEncoderInterface $encoder)
+    {
+        $this->encoder = $encoder;
+    }
     public function load(ObjectManager $manager)
     {
+        $faker = Factory::create('FR-fr');
+        //Nous gérons les utilisateurs
+        $users = [];
+        for($i=1;$i<=10;$i++)
+        {
+            $user = new User();
+            $hash = $this->encoder->encodePassword($user,'password');
+            $user->setFirstName($faker->firstname)
+                 ->setLastName($faker->lastname)
+                 ->setEmail($faker->email)
+                // ->setInstroduction($faker->sentence())
+                 ->setHash($hash);
+            //on demande au manger de sauvegarde
+            $manager->persist($user); 
+            $users[] = $user;    
+        }
+
         /*
         for ($count = 1; $count < 3; $count++) {
             $article = new Post();
