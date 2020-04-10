@@ -18,24 +18,44 @@
                     </a>
                     <li><a href="http://127.0.0.1:8000">Home</a></li>
                     <li><a href="http://127.0.0.1:8000/about">About</a></li>
-                    <li><a href="http://127.0.0.1:8000/show/posts">Blog</a></li>
+                    <li><a href="http://127.0.0.1:8000/show/posts">Articles</a></li>
                     <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
-                    <li><a href="http://127.0.0.1:8000/admin/posts/show">Accéder à mon espace</a></li>
+                    {% if app.user %}
+                       {# Si on est connecter  #}
+                       <li class="nav-item">
+                       <a href="{{ path('wellness_posts_list') }}" class="nav-link">Articles</a>
+                       </li>
+                       <li class="nav-item">
+                       <a href="{{ path('account_register') }}" class="nav-link">Admin</a>
+                       </li>
+                       <li class="nav-item">
+                       <a href="{{ path('account_logout') }}" class="nav-link">Déconnexion</a>
+                       </li>
+                    {% else %}
+                       <li class="nav-item">
+                       <a href="{{ path('account_login') }}" class="nav-link">Connexion</a>
+                       </li>
+                    {% endif %}
+
+
                 </ul>
             </div>
         </nav>
     </header>
 {% endblock %}
 
-{% block body %}{% endblock %}
-{% block javascripts %}{% endblock %}
 
 {% block footer %}
     <!-- Footer -->
     <footer>
         <!-- Copyright -->
-        <div class=" text-center py-3">© 2020 Copyright
-            <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub</a>
+
+        <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">Mention légal & GCU</a>
+
+        <div class=" text-center py-3">
+     © 2020 Copyright:
+   <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>
+
         </div>
         <!-- Copyright -->
     </footer>
