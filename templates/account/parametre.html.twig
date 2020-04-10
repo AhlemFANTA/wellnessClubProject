@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+{% endblock %}
+{% block body %}
+<div class="container">
+ <h1>Parametre de Connexion</h1>
+   <div class="col-sm-6">
+                         <div class="education-block" style="background:url('dac.jpg') no-repeat;background-size: cover">
+                            <span class="glyphicon glyphicon-education" style="color: white"></span>
+                            <h3>Ajouter un autre Admin</h3>
+
+                            <div class="red-divider"></div>
+                            <div class="form-group">
+                             <a class="aboutus-more" href="{{ path('account_register') }}">Cliquer ici</a>
+                            </div>
+                       
+                        </div>
+                         
+    </div>
+  <div class="col-sm-6">
+                         <div class="education-block" style="background:url('dac.jpg') no-repeat;background-size: cover">
+                            <span class="glyphicon glyphicon-education" style="color: white"></span>
+                            <h3>Changer votre mot de passe</h3>
+
+                            <div class="red-divider"></div>
+                           <div class="form-group">
+                            <a class="aboutus-more" href="{{ path('account_password') }}">Cliquer ici</a>
+                           </div>
+                       
+                        </div>
+                         
+    </div>
+
+</div>
+ 
+{% endblock %}
+
+ {% block footer %}{% endblock %}

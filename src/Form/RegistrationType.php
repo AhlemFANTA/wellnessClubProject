@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,26 +11,9 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class RegistrationType extends AbstractType
+class RegistrationType extends ApplicationType
 {
-    /**
-     * Permer d'avoir la configuration de base d'un champ
-     * @param string $label
-     * @param string $placeholder
-     * @param array $options
-     * @return array
-     */
-    public function getConfiguration($label,$placeholder,$options=[])
-    {
-        return array_merge(
-            [
-                'label'=>$label,
-                'attr' =>[
-                    'placeholder' => $placeholder
-                ]
-                ],$options);
-    }
-
+    
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
