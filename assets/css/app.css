@@ -110,17 +110,25 @@ nav ul li a {
         display: block;
     }
 }
-img.media-object{
-    width: 100%;
-    width: -moz-available;
-}
+    img.media-object{
+        width: 100%;
+        width: -moz-available;
+    }
 
-div.img{
-    width: 100%;
-    height: 100vh;
-    background: url(../images/background.jpg) no-repeat 50% 50%;
-    background-size: cover;
-}
+    div.img{
+        width: 100%;
+        height: 100vh;
+        background: url(../images/background.jpg) no-repeat 50% 50%;
+        background-size: cover;
+    }
+
+    img.post{
+        width: 100%;
+        width: -moz-available;
+        height: 40vh;
+        padding-bottom: 40px;
+        border-radius: 8px;
+    }
 
 @media {
 
