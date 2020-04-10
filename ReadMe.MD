@@ -8,11 +8,12 @@ ORM : Doctrine
 SGBD : MySQL 8.0.18  
 Test : Fixtures*
 
-__Ce projet contient 4 fonctionnalités développées par 4 développeurs__ :
-- Ahlem : gestion des articles (CRUD + affichage + Tests),
-- Kim :   gestion des commentaires (CRUD + affichage + Tests),
-- Ayoub : gestion du système d'envoi de mail (avec le composant mailer de Symfony),
-- Ayoub et Adiel : gestion du compte Admin (connexion, création compte Admin, initialisation du modt de passe).
+__Ce projet contient 4 fonctionnalités__ :
+-  gestion des articles (CRUD + affichage + Tests),
+-  gestion des commentaires (CRUD + affichage + Tests),
+-  gestion du système d'envoi de mail (avec le composant mailer de Symfony),  
+-  gestion du compte Admin (connexion, création compte Admin, réinitialisation du mot de passe).  
+
 
 __Le Blog comprend les services suivants:__
 - Lire les articles du blog

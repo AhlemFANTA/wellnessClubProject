@@ -17,7 +17,7 @@
                              width="150" height="100">
                     </a>
                     <li><a href="http://127.0.0.1:8000">Home</a></li>
-                    <li><a href="http://127.0.0.1:8000/about">About</a></li>
+                    <li><a href="http://127.0.0.1:8000/about">About Us</a></li>
                     <li><a href="http://127.0.0.1:8000/show/posts">Articles</a></li>
                     <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
                     {% if app.user %}
@@ -26,7 +26,7 @@
                        <a href="{{ path('wellness_posts_list') }}" class="nav-link">Articles</a>
                        </li>
                        <li class="nav-item">
-                       <a href="{{ path('account_register') }}" class="nav-link">Admin</a>
+                       <a href="{{ path('account_parametre') }}" class="nav-link">Admin</a>
                        </li>
                        <li class="nav-item">
                        <a href="{{ path('account_logout') }}" class="nav-link">Déconnexion</a>
@@ -52,7 +52,7 @@
 
         <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">Mention légal & GCU</a>
 
-        <div class=" text-center py-3">
+        <div class=" text-center">
      © 2020 Copyright:
    <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>
 

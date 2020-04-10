@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Form\ApplicationType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -10,25 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class RegistrationType extends AbstractType
+class RegistrationType extends ApplicationType
 {
-    /**
-     * Permer d'avoir la configuration de base d'un champ
-     * @param string $label
-     * @param string $placeholder
-     * @param array $options
-     * @return array
-     */
-    public function getConfiguration($label,$placeholder,$options=[])
-    {
-        return array_merge(
-            [
-                'label'=>$label,
-                'attr' =>[
-                    'placeholder' => $placeholder
-                ]
-            ],$options);
-    }
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -38,7 +22,7 @@ class RegistrationType extends AbstractType
             ->add('email', EmailType::class,$this->getConfiguration("Email", "Votre adresse mail..."))
             ->add('hash', PasswordType::class,$this->getConfiguration("Mot de passe", "Choisissez un bon mot de passe..."))
             ->add('passwordConfirm', PasswordType::class,$this->getConfiguration("Confirmation Mot de passe", "Veuillez confirmez votre mot de passe..."))
-            //  ->add('instroduction', TextType::class,$this->getConfiguration("Introduction ", "Presentez vous en quelque mot..."))
+          //  ->add('instroduction', TextType::class,$this->getConfiguration("Introduction ", "Presentez vous en quelque mot..."))
 
         ;
     }

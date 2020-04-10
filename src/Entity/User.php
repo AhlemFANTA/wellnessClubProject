@@ -48,7 +48,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *
+     * @Assert\Length(min=8,minMessage="Votre mot de passe doit faire au moins 8 caractéres")
      */
     private $hash;
     /**
@@ -73,8 +73,8 @@ class User implements UserInterface
     {
         if(empty($this->slug))
         {
-            $slugify = new Slugify();
-            $this->slug = $slugify->slugify($this->firstName .' '.$this->lastName  );
+         $slugify = new Slugify();
+         $this->slug = $slugify->slugify($this->firstName .' '.$this->lastName  );
         }
     }
 
@@ -158,7 +158,7 @@ class User implements UserInterface
     {
         return $this->email;
     }
-    //au cas ou on a des donénes sensibles
+    //au cas ou on a des donnees sensibles
     public function eraseCredentials()
     {
 
