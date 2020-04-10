@@ -23,10 +23,10 @@ class HomeController extends AbstractController {
     }
 
     /**
-     * @Route("/contact",  name="wellness_contact")
+     * @Route("/mention",  name="wellness_mention")
      */
-    public function contact(): Response{
-        return $this->render('home/contact.html.twig');
+    public function mention(): Response{
+        return $this->render('home/mention.html.twig');
     }
 
 }

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+
+{% endblock %}
+{% block body %}
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+<div class="aboutus-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                 <div class="aboutus">
+                    <h4 class="aboutus-title">MENTIONS LÉGALES & GCU</h4>
+                    <h5 style="font-weight: bold">Editeur du site</h5>
+                    Blog WellnessClub 
+                    par L3 miage <br>
+                    Université paris 1, 90 rue Tolbiac <br>
+                    75013 paris  France <br>
+                    Tél. : + 33 (0) 0 00 00 00 00 <br>
+                    <br>
+                    <h5 style="font-weight: bold">Responsable Formation</h5>
+                    YASSIN HAMOU OUALI <br>
+                    <h5 style="font-weight: bold">Conditions d’utilisation</h5>
+                    <p class="aboutus-text">Le site accessible par l’url suivant : blog.solidpepper.com est exploité dans le respect de la législation française. L’utilisation de ce site est régie par les présentes mentions légales et conditions générales d’utilisation. En utilisant le site, vous reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. Celles-ci pourront être modifiées à tout moment et sans préavis par la société TACT DEVELOPPEMENT.
+                     </p>
+                     <h5 style="font-weight: bold">Confidentialité</h5>
+                    <p class="aboutus-text"> Confidentialité
+Vos données personnelles sont confidentielles et ne seront en aucun cas communiquées à des tiers hormis pour la bonne exécution de la prestation.</p>
+                  
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus-banner">
+                    <img src="https://gm-digital-consulting.com/wp-content/uploads/2018/08/mentions_legales-770x499.jpg" alt="">
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+{% endblock %}
