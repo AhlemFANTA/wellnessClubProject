@@ -12,7 +12,7 @@ class HomeController extends AbstractController {
      * @Route("/", name="wellness_homepage")
      */
     public function homepage(): Response{
-        return $this->render('home/home.html.twig');
+        return $this->render('home/homepage.html.twig');
     }
 
     /**
@@ -26,7 +26,7 @@ class HomeController extends AbstractController {
      * @Route("/contact",  name="wellness_contact")
      */
     public function contact(): Response{
-        return $this->render('contact/contact.html.twig');
+        return $this->render('home/contact.html.twig');
     }
 
 }

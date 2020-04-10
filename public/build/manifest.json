@@ -1,7 +1,10 @@
 {
+  "build/app.css": "/build/app.css",
   "build/app.js": "/build/app.js",
   "build/runtime.js": "/build/runtime.js",
   "build/background.jpg": "/build/background.jpg",
+  "build/images/background.jpg": "/build/images/background.fafea3b1.jpg",
+  "build/images/logo.png": "/build/images/logo.05fc0309.png",
   "build/logo.png": "/build/logo.png",
   "build/nutrition.jpg": "/build/nutrition.jpg",
   "build/wellness.jpg": "/build/wellness.jpg"

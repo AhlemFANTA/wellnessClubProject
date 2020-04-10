@@ -1,61 +1,58 @@
 {% extends "base.html.twig" %}
+
 {% block stylesheets %}
     {{ parent() }}
-    <!doctype html>
-<html lang="fr">
-<head>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <head>
+        <link rel="stylesheet"
+              href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
+              id="bootstrap-css">
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
-    <title></title>
-</head>
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+        <title></title>
+    </head>
 {% endblock %}
 
 {% block body %}
-<body>
-<div class="container">
-    <div class="well">
-        <div class="media" style="padding-top: 12%">
+    <div class="container">
+        <div class="well">
+            <div class="media" style="padding-top: 3%">
 
-            <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
-                 height="236">
-            <div class="media-body">
-                {{ form(form) }}
-                {% for message in app.flashes('success') %}
-                    <div class="alert alert-success">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-                <ul class="list-inline list-unstyled">
-                    <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
-                    <li>|</li>
-                    <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
-                    <li>|</li>
-                    <li>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </li>
-                    <li>|</li>
-                    <li>
-                        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-                        <span><i class="fa fa-facebook-square"></i></span>
-                        <span><i class="fa fa-twitter-square"></i></span>
-                        <span><i class="fa fa-google-plus-square"></i></span>
-                    </li>
-                </ul>
+                <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
+                     height="236">
+                <div class="media-body">
+                    {{ form(form) }}
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <br><br><br>
+            {% include 'comment/commentsViewOnly.html.twig' %}
         </div>
-<br><br><br>
-{% include 'comment/commentsViewOnly.html.twig' %}
-</div>
-</div>
-</div>
-</body>
-</html>
+    </div>
 {% endblock %}

@@ -1,20 +1,17 @@
 {% extends 'base.html.twig' %}
-{% block head %}
     {{ parent() }}
-{% block stylesheets %}
-    <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
-        <title>Ajouter un article</title>
-    </head>
-{% endblock %}
-{% endblock %}
+    {% block stylesheets %}
+        <head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+            <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+            <title>Ajouter un article</title>
+        </head>
+    {% endblock %}
 
 {% block body %}
-    <body>
-    <div class="media-object"  style=" padding-bottom: 10%"  >
-        <div class = background> </div>
-        <div class="form" style = "padding-left: 40%">
+    <div class="media-object" style=" padding-bottom: 10%">
+        <div class=background></div>
+        <div class="form" style="padding-left: 40%">
             <h1 class="text-primary" style="padding-top: 6% "> Ajouter un nouveau article</h1>
             {{ form_start(form, {
                 'attr': {
@@ -27,15 +24,13 @@
             {{ form_row(form.contenu) }}
             {{ form_row(form.auteur) }}
 
-            <button type="submit" class="btn btn-primary" style="margin-left: 40%" >Publier l'article</button>
+            <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
                     {{ message }}
                 </div>
             {% endfor %}
             {{ form_end(form) }}
-
         </div>
-        </div>
-    </body>
+    </div>
 {% endblock %}

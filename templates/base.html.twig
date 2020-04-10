@@ -1,86 +1,14 @@
 <!DOCTYPE html>
-<html>
 
 <head>
     {% block title %} <title> Welcome to wellnessClub! </title>{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     {% block stylesheets %}
-        <style>
-            body {
-                font-family: "Helvetica Neue", sans-serif;
-                font-weight: lighter;
-            }
-
-            header {
-                background: url(public/build/background.jpg) no-repeat 50% 50%;
-                background-size: cover;
-            }
-
-            nav {
-                position: fixed;
-                width: 100%;
-                line-height: 60px;
-            }
-
-            nav ul {
-                line-height: 60px;
-                list-style: none;
-                overflow: hidden;
-                background-color: #5eb5e0;
-                text-align: right;
-                margin: 0;
-                padding: 0 40px 0 0;
-                transition: 1s;
-            }
-
-            nav.black ul {
-                background: #000;
-            }
-
-            nav ul li {
-                display: inline-block;
-                padding: 16px 40px;;
-            }
-
-            nav ul li a {
-                text-decoration: none;
-                color: #fff;
-                font-size: 16px;
-            }
-
-            @media (max-width: 786px) {
-                nav ul {
-                    max-height: 0px;
-                    background: #000;
-                }
-
-                nav.black ul {
-                    background: #000;
-                }
-
-                nav ul li {
-                    box-sizing: border-box;
-                    width: 100%;
-                    padding: 10px;
-                    text-align: center;
-                }
-            }
-
-            footer {
-                background-color: #5eb5e0;
-                position: fixed;
-                left: 0;
-                bottom: 0;
-                width: 100%;
-                text-align: center;
-            }
-
-        </style>
-    {% endblock %}
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/> {% endblock %}
 </head>
 
 {% block header %}
-    <header>
+    <header class="media">
         <nav class="menu">
             <div>
                 <ul>
@@ -106,12 +34,11 @@
     <!-- Footer -->
     <footer>
         <!-- Copyright -->
-        <div class=" text-center py-3">© 2020 Copyright:
-            <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>
+        <div class=" text-center py-3">© 2020 Copyright
+            <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub</a>
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
-
 {% endblock %}
-</html>
+

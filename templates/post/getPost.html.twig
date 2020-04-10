@@ -17,7 +17,7 @@
 {% block body %}
     <div class="container">
         <div class="well">
-            <div class="media" style="padding-top: 12%">
+            <div class="media" style="padding-top: 3%">
 
                 <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
                      height="236">
@@ -26,18 +26,18 @@
                     <h2 class="media-heading text-info">{{ article.titre }}</p></h2>
                     <div class="text-body">
                         <div class="d-flex align-text-bottom"><h4>{{ article.contenu }}</h4></div>
-                        <p class="text-right">By {{ article.auteur }}</p>
+                        <p class="text-right">Par {{ article.auteur }}</p>
                         <ul class="list-inline list-unstyled">
-                            <li><span><i class="glyphicon glyphicon-calendar" style="color: #5eb5e0"></i> 2 days, 8 hours </span></li>
+                            <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heurs </span></li>
                             <li>|</li>
-                            <span><i class="glyphicon glyphicon-comment" style="color: #5eb5e0"></i> 2 comments</span>
+                            <span><i class="glyphicon glyphicon-comment"></i> 2 commentaires</span>
                             <li>|</li>
                             <li>
-                                <span class="glyphicon glyphicon-star" style="color: #5eb5e0"></span>
-                                <span class="glyphicon glyphicon-star" style="color: #5eb5e0"></span>
-                                <span class="glyphicon glyphicon-star" style="color: #5eb5e0"></span>
-                                <span class="glyphicon glyphicon-star" style="color: #5eb5e0"></span>
-                                <span class="glyphicon glyphicon-star-empty" style="color: #5eb5e0"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
                             </li>
                             <li>|</li>
                             <li>
@@ -50,7 +50,6 @@
                     </div>
                 </div>
             </div>
-
 
             {% if replying %}
                 {% include 'comment/commentRepondre.html.twig' %}

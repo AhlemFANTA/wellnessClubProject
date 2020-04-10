@@ -9,7 +9,7 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet" />
+    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
     <title></title>
 </head>
 {% endblock %}
@@ -21,41 +21,43 @@
     <div class="well">
         <div class="media">
 
-                <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304" height="236">
+            <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
+                 height="236">
 
             <div class="media-body">
                 <h2 class="media-heading text-info">{{ article.title }}</p></h2>
-                <div class="text-body"><div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
-                <p class="text-right">By Ahlem</p>
-                <ul class="list-inline list-unstyled">
-                    <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
-                    <li>|</li>
-                    <span><i class="glyphicon glyphicon-comment"></i> 2 comments</span>
-                    <li>|</li>
-                    <li>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star"></span>
-                        <span class="glyphicon glyphicon-star-empty"></span>
-                    </li>
-                    <li>|</li>
-                    <li>
-                        <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-                        <span><i class="fa fa-facebook-square"></i></span>
-                        <span><i class="fa fa-twitter-square"></i></span>
-                        <span><i class="fa fa-google-plus-square"></i></span>
-                    </li>
-                </ul>
+                <div class="text-body">
+                    <div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
+                    <p class="text-right">By Ahlem</p>
+                    <ul class="list-inline list-unstyled">
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heurs </span></li>
+                        <li>|</li>
+                        <span><i class="glyphicon glyphicon-comment"></i> 2 commentaires</span>
+                        <li>|</li>
+                        <li>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star"></span>
+                            <span class="glyphicon glyphicon-star-empty"></span>
+                        </li>
+                        <li>|</li>
+                        <li>
+                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                            <span><i class="fa fa-facebook-square"></i></span>
+                            <span><i class="fa fa-twitter-square"></i></span>
+                            <span><i class="fa fa-google-plus-square"></i></span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
-</div>
 {% if replying %}
-  {% include 'comment/commentRepondre.html.twig' %}
+    {% include 'comment/commentRepondre.html.twig' %}
 {% else %}
-  {% include 'comment/commentBlock.html.twig' %}
+    {% include 'comment/commentBlock.html.twig' %}
 {% endif %}
 </body>
 </html>
