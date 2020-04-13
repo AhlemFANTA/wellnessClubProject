@@ -4,8 +4,6 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\ORM\Mapping\PreUpdate;
-use Doctrine\ORM\Mapping\PrePersist;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -158,11 +156,10 @@ class User implements UserInterface
     {
         return $this->email;
     }
-    //au cas ou on a des donnees sensibles
+    //au cas ou on a des donénes sensibles
     public function eraseCredentials()
     {
 
     }
-
 
 }

@@ -11,6 +11,7 @@
 
 
     {% block body %}
+        <body>
         {% block javascripts %}
             <script>
                 $(document).ready(function(){
@@ -50,4 +51,5 @@
                 {{ form_end(form) }}
             </div>
         </div>
-    {% endblock %}
+    </body>
+{% endblock %}

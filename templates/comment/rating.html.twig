@@ -1,0 +1,9 @@
+<span class="rating">
+            {% for i in 1..5 %}
+                {% if i<= rating %}
+                    <i class="glyphicon glyphicon-star" style="color:#718C00"></i>
+                {% else %}
+                    <i class="glyphicon glyphicon-star" style="color:blanchedalmond"></i>
+                {% endif %}
+            {% endfor %}
+</span>

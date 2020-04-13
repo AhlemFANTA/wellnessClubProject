@@ -7,19 +7,25 @@
     <h2>Commentaires</h2>
     {% for comment in comments %}
         {% if comment.getParentId() == null and comment.getIsVisible() %}
-            <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
-            &nbsp;&nbsp;{{ comment.content }}
+            <div class="alert alert-light" style="background-color: white">
+                <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
+                {#<strong>Avis :</strong> {{ comment.rating}}#}
+                {#{% set rating = comment.rating %}#}
+                {% include 'comment/rating.html.twig' with {'rating':comment.rating} %}
+                <br>
+                &nbsp;&nbsp;{{ comment.content }}
+                &nbsp;&nbsp;
 
-            {% if app.user %}
-                <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">
-                    x
+                <br/>
+                <a href="{{ id }}/comment/{{ comment.id }}/like" style="color:blue; text-decoration:None">Like</a>
+                ({{ comment.likes }})
+                &nbsp;&nbsp;
+                <a href="{{ id }}/comment/{{ comment.id }}/repondre" style="color:blue">Repondre</a>
+                &nbsp;&nbsp;<a href="{{ id }}/comment/{{ comment.id }}/supprimer"
+                               style="color:red; text-decoration:None">
+                    Supprimer
                 </a>
-            {% endif %}
-            <br/>
-            <a href="{{ id }}/comment/{{ comment.id }}/like" style="color:blue; text-decoration:None">Like</a>
-            ({{ comment.likes }})
-            &nbsp;&nbsp;
-            <a href="{{ id }}/comment/{{ comment.id }}/repondre" style="color:blue">Repondre</a>
+            </div>
             <br/><br/>
 
             {% for subcomment in comments %}
@@ -31,9 +37,9 @@
                     &nbsp;&nbsp;
                     {{ subcomment.content }}
                     {% if app.user %}&nbsp;
-                    <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
-                        x
-                    </a>
+                        <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
+                            x
+                        </a>
                     {% endif %}
                     <br/>
                     <a href="{{ id }}/comment/{{ subcomment.id }}/like" style="color:blue; text-decoration:None">

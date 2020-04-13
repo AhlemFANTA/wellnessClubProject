@@ -30,11 +30,12 @@ class PostCommentFixtures extends Fixture
                  ->setEmail($faker->email)
                 // ->setInstroduction($faker->sentence())
                  ->setHash($hash);
+
             //on demande au Manger de sauvegarder
             $manager->persist($user);
             $users[] = $user;
         }
-        /* pour le test */
+        /* premiere connexion */
         $user0= new User();
         $hash = $this->encoder->encodePassword($user0,'password');
         $user0->setFirstName("Admin")
@@ -43,6 +44,7 @@ class PostCommentFixtures extends Fixture
               ->setHash($hash);
         $manager->persist($user0);
         $manager->flush();
+
         /*
         for ($count = 1; $count < 3; $count++) {
             $article = new Post();
@@ -73,7 +75,12 @@ class PostCommentFixtures extends Fixture
             $comment = new Comment();
             $comment->setPrenom("Jane". " ". $count);
             $comment->setNom("Doe");
+
             $comment->setEmail("Jane@email.fr");
+
+            $comment->setRating(mt_rand(1,5));
+            $comment->setEmail("email@exemple.fr");
+
             $comment->setContent("Merci pour cet article très utile, bon courage pour la suite ");
             $comment->setLikes(1);
             $comment->setArticleId(1);

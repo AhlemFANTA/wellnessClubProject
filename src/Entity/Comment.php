@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
+ * @ORM\HasLifecycleCallbacks()
  */
 class Comment
 {
@@ -64,6 +65,11 @@ class Comment
      * @ORM\Column(type="boolean")
      */
     private $is_visible;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $rating;
 
     public function __construct() {
      $this->setLikes(0);
@@ -167,6 +173,18 @@ class Comment
     public function setIsVisible(bool $is_visible): self
     {
         $this->is_visible = $is_visible;
+
+        return $this;
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(int $rating): self
+    {
+        $this->rating = $rating;
 
         return $this;
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use Swift_Mailer;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ContactController extends AbstractController
 {
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/contact", name="wellness_contact")
      */
     public function index(Request $request, \Swift_Mailer $mailer)
     {
@@ -20,13 +20,12 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $contactFormData = $form->getData();
-
             $message = (new \Swift_Message('You Got Mail from your blog !'))
-                ->setSubject($contactFormData['Sujet'])
-                ->setFrom($contactFormData['Email'])
+                ->setFrom($contactFormData['from'])
+                ->setSubject($contactFormData['subject'])
                 ->setTo('benkhadajmiaga2020@gmail.com')
                 ->setBody(
-                    $contactFormData['Message'],
+                    $contactFormData['message'],
                     'text/plain'
                 )
             ;
@@ -35,7 +34,7 @@ class ContactController extends AbstractController
 
             $this->addFlash('success', ' Votre message est envoyé avec succès');
             
-            return $this->redirectToRoute('contact');
+            return $this->redirectToRoute('wellness_contact');
 
         }
 

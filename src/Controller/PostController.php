@@ -30,9 +30,9 @@ class PostController extends AbstractController
      * @param $id
      * @return Response
      */
+
     public function getPost($id, Request $request): Response
     {
-
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Post::class)->find($id);
 
@@ -46,12 +46,13 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
             $entityManager->flush();
+            //return $this->redirectToRoute('wellness_post_list');
         };
         // get all comments
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
-
+        
         return $this->render('post/getPost.html.twig', array('article' => $article,
         'comments'=>$comments,
         'submitForm'=>$form->createView(),
