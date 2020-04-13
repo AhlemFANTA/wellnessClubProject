@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use Swift_Mailer;
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,10 +20,9 @@ class ContactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $contactFormData = $form->getData();
-
             $message = (new \Swift_Message('You Got Mail from your blog !'))
+                ->setFrom($contactFormData['from'])
                 ->setSubject($contactFormData['subject'])
-                ->setFrom($contactFormData['fromEmail'])
                 ->setTo('benkhadajmiaga2020@gmail.com')
                 ->setBody(
                     $contactFormData['message'],

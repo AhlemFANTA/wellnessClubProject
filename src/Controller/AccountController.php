@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\AccountType;
 use App\Entity\PasswordUpdate;
 use App\Form\RegistrationType;
 use App\Form\PasswordUpdateType;
@@ -130,4 +131,28 @@ class AccountController extends AbstractController
     {
         return $this->render('account/parametre.html.twig');
     }
+     /**
+     * Permet d'afficher et de traiter le formulaire de modification de profil
+     *@Route("/account/profile", name="account_profile")
+     * @return Response
+     */
+    public function profile(Request $request,EntityManagerInterface $manager)
+    {
+        //récuperer l'user connecter
+        $user = $this->getUser();
+        $form = $this->createForm(AccountType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->persist($user);
+                $manager->flush();
+                $this->addFlash('success',"Les données du profil ont été enregistré avec succés  !");
+
+        }
+        return $this->render('account/profile.html.twig',
+    [
+        'form'=>$form->createView()
+    ]);
+    }
+
+
 }

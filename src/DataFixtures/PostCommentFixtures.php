@@ -63,6 +63,7 @@ class PostCommentFixtures extends Fixture
             $comment = new Comment();
             $comment->setPrenom("Jane". " ". $count);
             $comment->setNom("Doe");
+            $comment->setRating(mt_rand(1,5));
             $comment->setEmail("email@exemple.fr");
             $comment->setContent("Merci pour cet article très utile, bon courage pour la suite ");
             $comment->setLikes(1);
