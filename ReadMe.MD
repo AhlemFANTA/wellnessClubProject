@@ -24,7 +24,11 @@ __Le Blog comprend les services suivants:__
 - Se connecter entant qu'Admin, et donc avoir en plus les privilèges suivants : 
   - Ajouter un nouveau article,
   - Modifier un article,
-  - Supprimer un article.
+  - Supprimer un article, 
+  - Ajouter  un commentaire, 
+  - Répondre à un commentaire,
+  - Supprimer un commentaire.
+
 
 
 # II - Lancement
@@ -37,7 +41,7 @@ __Le Blog comprend les services suivants:__
 	```php- php bin/console doctrine:database:create
 	 php bin/console doctrine:schema:create
 	 php bin/console doctrine:schema:update --force
-	 php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction```
+	 php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction
 
 - Compiler assets et générer le dossier build en utilisant la commande suivante :  
      `yarn encore dev`
@@ -45,7 +49,7 @@ __Le Blog comprend les services suivants:__
 
 ## 2. Exécution du service
 Le service se lance et tourne sur le port 8080 en utilisant la commande suivante : `php -S 127.0.0.1:8000 -t public`  
-Pour se connecter en tant qu'administrateur du blog utiliser le mail et le mot de passe (par défaut) ci-dessous ;  
+Pour se connecter en tant qu'administrateur du blog utiliser le mail et le mot de passe (d'initialisation) ci-dessous ;  
  PS : une fois connecté, vous pouvez créer votre propre compte.   
 *Adresse mail : admin@wellnessClub.com   
 Mot de passe :  password*
