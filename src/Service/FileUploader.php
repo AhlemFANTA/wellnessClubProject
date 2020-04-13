@@ -26,6 +26,7 @@ class FileUploader
 
         try {
             $file->move($this->getTargetDirectory(), $fileName);
+
         } catch (FileException $e) {
             // ... handle exception if something happens during file upload
         }

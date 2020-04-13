@@ -23,8 +23,13 @@
             {{ form_row(form.titre) }}
             {{ form_row(form.contenu) }}
             {{ form_row(form.auteur) }}
-            {{ form_row(form.image) }}
 
+            {{ form_row(form.image, {
+                attr: {
+                    'placeholder': 'Selectionnez une image'
+                }
+            }) }}
+            <br><br>
             <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
             {% for message in app.flashes('success') %}
                 <div class="alert alert-success">
@@ -34,4 +39,14 @@
             {{ form_end(form) }}
         </div>
     </div>
+    {% block javascripts %}
+        <script>
+            $('.custom-file-input').on('change', function(event) {
+                var inputFile = event.currentTarget;
+                $(inputFile).parent()
+                    .find('.custom-file-label')
+                    .html(inputFile.files[0].name);
+            });
+        </script>
+    {% endblock %}
 {% endblock %}

@@ -3,8 +3,8 @@
 
 Développement d'un blog de bien-être administré par les modérateurs de l'entreprise **Symfeed**.
 
-*Ce blog nommé __"WellnessClub"__ est implémenté en langage de programmation PHP avec le Framewok Symfony 5   
-ORM : Doctrine  
+Ce blog nommé __"WellnessClub"__ est implémenté en langage de programmation PHP avec le Framewok Symfony 5   
+*ORM : Doctrine  
 SGBD : MySQL 8.0.18  
 Test : Fixtures*
 
@@ -45,9 +45,10 @@ __Le Blog comprend les services suivants:__
 
 ## 2. Exécution du service
 Le service se lance et tourne sur le port 8080 en utilisant la commande suivante : `php -S 127.0.0.1:8000 -t public`  
-Pour se connecter en tant qu'administrateur du blog utiliser l'@mail et le mot de passe par défaut ci-dessous ; (une fois connecté, vous pouvez créer votre propre compte)  
-Adresse mail : admin@wellnessClub.com 
-Mot de passe :  password
+Pour se connecter en tant qu'administrateur du blog utiliser le mail et le mot de passe (par défaut) ci-dessous ;  
+ PS : une fois connecté, vous pouvez créer votre propre compte.   
+*Adresse mail : admin@wellnessClub.com   
+Mot de passe :  password*
 
 ## III - Captures
 Liste des services :

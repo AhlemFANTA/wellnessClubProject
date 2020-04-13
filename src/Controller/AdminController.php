@@ -42,7 +42,7 @@ class AdminController extends AbstractController
             $em->persist($post);
             $em->flush();
             $this->addFlash('success', 'Article Created! Knowledge is power!');
-
+            return $this->redirectToRoute('wellness_posts_list');
         }
         return $this->render('admin/createPost.html.twig', array(
             'form' => $form->createView(),
