@@ -23,6 +23,7 @@
             {{ form_row(form.titre) }}
             {{ form_row(form.contenu) }}
             {{ form_row(form.auteur) }}
+            {{ form_row(form.image) }}
 
             <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
             {% for message in app.flashes('success') %}

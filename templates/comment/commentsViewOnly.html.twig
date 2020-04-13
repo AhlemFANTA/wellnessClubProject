@@ -7,10 +7,11 @@
         {% if comment.getParentId() == null and comment.getIsVisible() %}
             <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
             &nbsp;&nbsp;{{ comment.content }}
-            &nbsp;&nbsp;
+            {% if app.user %}&nbsp;&nbsp;
             <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">
                 x
             </a>
+            {% endif %}
             <br/>
             ({{ comment.likes }} likes)
             <br/><br/>

@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Service\FileUploader;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,10 +20,11 @@ class AdminController extends AbstractController
     /**
      * @Route("/new/post/admin",name= "wellness_post_new")
      * @param Request $request
+     * @param FileUploader $fileUploader
      * @return Response
      * @throws Exception
      */
-    public function createPost(Request $request)
+    public function createPost(Request $request, FileUploader $fileUploader)
     {
         $post = new Post();
         $post->setDate(new \DateTime('now'));
@@ -28,6 +32,12 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile $picFile */
+            $picFile = $form['image']->getData();
+            if ($picFile) {
+                $picFileName = $fileUploader->upload($picFile);
+                $post->setPicFilename($picFileName);
+            }
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
@@ -75,9 +85,12 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $article->setTitle($form["title"]->getData());
-            $article->setContent($form["content"]->getData());
-            $article->setAuthor($form["author"]->getData());
+            $article->setTitre($form["titre"]->getData());
+            $article->setContenu($form["contenu"]->getData());
+            $article->setAuteur($form["auteur"]->getData());
+            $article->setPicFilename(
+                new File($this->getParameter('pictures_directory').'/'.$article->getPicFilename())
+            );
             $em->flush();
             $this->addFlash('success', 'Article was updated successfully!');
         };

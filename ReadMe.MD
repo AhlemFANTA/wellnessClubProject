@@ -44,8 +44,10 @@ __Le Blog comprend les services suivants:__
 
 
 ## 2. Exécution du service
-Le service se lance et tourne sur le port 8080 en utilisant la commande suivante : `php -S 127.0.0.1:8000 -t public`
-
+Le service se lance et tourne sur le port 8080 en utilisant la commande suivante : `php -S 127.0.0.1:8000 -t public`  
+Pour se connecter en tant qu'administrateur du blog utiliser l'@mail et le mot de passe par défaut, ci-dessous ; (une fois connecté, vous pouvez changer les données de votre compte)  
+Adresse mail : admin@wellnessClub.com 
+Mot de passe :  password
 
 ## III - Captures
 Liste des services :

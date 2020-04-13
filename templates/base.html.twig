@@ -16,28 +16,26 @@
                         <img src="{{ asset('build//logo.png') }}" class="img-circle" alt="Cinque Terre"
                              width="150" height="100">
                     </a>
-                    <li><a href="http://127.0.0.1:8000">Home</a></li>
-                    <li><a href="http://127.0.0.1:8000/about">About Us</a></li>
-                    <li><a href="http://127.0.0.1:8000/show/posts">Articles</a></li>
-                    <li><a href="http://127.0.0.1:8000/contact">Contact</a></li>
+
+
                     {% if app.user %}
-                       {# Si on est connecter  #}
-                       <li class="nav-item">
-                       <a href="{{ path('wellness_posts_list') }}" class="nav-link">Articles</a>
-                       </li>
-                       <li class="nav-item">
-                       <a href="{{ path('account_parametre') }}" class="nav-link">Admin</a>
-                       </li>
-                       <li class="nav-item">
-                       <a href="{{ path('account_logout') }}" class="nav-link">Déconnexion</a>
-                       </li>
-                    {% else %}
-                       <li class="nav-item">
-                       <a href="{{ path('account_login') }}" class="nav-link">Connexion</a>
-                       </li>
+                        {# Si on est connecter  #}
+                        <li class="nav-item">
+                        <li><a href="{{ path('wellness_homepage') }}">Accueil</a></li>
+                        <li><a href="{{ path('wellness_about') }}">Qui Somme-Nous ?</a></li>
+                        <li><a href="{{ path('wellness_posts_list') }}" class="nav-link">Gestion Articles</a></li>
+                        <li><a href="{{ path('account_parametre') }}" class="nav-link">Gestion Comptes</a></li>
+                        <li><a href="{{ path('wellness_contact') }}">Contact</a></li>
+                        <li><a href="{{ path('account_logout') }}" class="nav-link">Déconnexion</a></li>
+                        {% else %}
+
+                        <li class="nav-item">
+                        <li><a href="{{ path('wellness_homepage') }}">ACCUEIL</a></li>
+                        <li><a href="{{ path('wellness_about') }}">QUI SOMMES-NOUS ?</a></li>
+                        <li><a href="{{ path('wellness_posts') }}">ARTICLES</a></li>
+                        <li><a href="{{ path('wellness_contact') }}">CONTACT</a></li>
+                        <li><a href="{{ path('account_login') }}">CONNEXION</a></li>
                     {% endif %}
-
-
                 </ul>
             </div>
         </nav>
@@ -50,11 +48,11 @@
     <footer>
         <!-- Copyright -->
 
-        <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">Mention légal & GCU</a>
+        <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">CGU & MENTIONS LEGALES</a>
 
         <div class=" text-center">
-     © 2020 Copyright:
-   <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WellnessClub &copy;</a>
+            Copyright © 2020
+            <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WELLNESSCLUB</a>
 
         </div>
         <!-- Copyright -->

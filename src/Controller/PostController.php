@@ -14,7 +14,7 @@ class PostController extends AbstractController
 {
 
     /**
-     * @Route("/show/posts", name= "wellness_post_list")
+     * @Route("/show/posts", name= "wellness_posts")
      */
     public function showPost(): Response
     {

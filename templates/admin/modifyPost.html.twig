@@ -3,6 +3,7 @@
 {% block stylesheets %}
 
     <head>
+        <META HTTP-EQUIV="REFRESH" CONTENT="10;URL=http://127.0.0.1:8000/show/posts">
         <link rel="stylesheet"
               href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
@@ -23,12 +24,21 @@
                 <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
                      height="236">
                 <div class="media-body">
-                    {{ form(form) }}
+                    <h1 class="text-primary" style="padding-top: 6% "> Modifier l'article</h1>
+                    {{ form_start(form)  }}
+                    {{ form_row(form.titre) }}
+                    {{ form_row(form.contenu) }}
+                    {{ form_row(form.auteur) }}
+                    {{ form_row(form.image) }}
+
+                    <button type="submit" class="btn btn-primary" style="margin-left: 40%">Mettre à jour l'article</button>
+
                     {% for message in app.flashes('success') %}
                         <div class="alert alert-success">
                             {{ message }}
                         </div>
                     {% endfor %}
+                    {{ form_end(form) }}
                     <ul class="list-inline list-unstyled">
                         <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
                         <li>|</li>

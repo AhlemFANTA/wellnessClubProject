@@ -40,6 +40,26 @@ class Post
      */
     public $date;
 
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $picFilename;
+
+    public function getPicFilename()
+    {
+        return $this->picFilename;
+    }
+
+    public function setPicFilename($picFilename)
+    {
+        $this->picFilename = $picFilename;
+
+        return $this;
+    }
+
+
+
     /**
      * @return mixed
      */

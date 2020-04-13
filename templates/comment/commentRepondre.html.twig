@@ -9,8 +9,10 @@
             &nbsp;&nbsp;
             {{ comment.content }}
             &nbsp;&nbsp;
+            {% if app.user %}
             <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">x</a>
             <br/>
+            {% endif %}
             <a href="/get/post/{{ id }}/comment/{{ comment.id }}/like" style="color:blue">Like</a>
             ({{ comment.likes }})
             &nbsp;&nbsp;
@@ -25,10 +27,11 @@
                     </b>
                     &nbsp;&nbsp;
                     {{ subcomment.content }}
-                    &nbsp;&nbsp;
+                    {% if app.user %}
                     <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
                         x
                     </a>
+                    {% endif %}
                     <br/>
                     <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/like"
                        style="color:blue; text-decoration:None">
