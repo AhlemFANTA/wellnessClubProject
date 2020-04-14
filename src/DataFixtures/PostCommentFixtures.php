@@ -21,7 +21,7 @@ class PostCommentFixtures extends Fixture
         $faker = Factory::create('FR-fr');
         //Nous gérons les utilisateurs
         $users = [];
-        for($i=1;$i<=2;$i++)
+        for($i=1;$i<=10;$i++)
         {
             $user = new User();
             $hash = $this->encoder->encodePassword($user,'password');
@@ -36,14 +36,14 @@ class PostCommentFixtures extends Fixture
             $users[] = $user;
         }
         /* premiere connexion */
-        $user0= new User();
-        $hash = $this->encoder->encodePassword($user0,'password');
-        $user0->setFirstName("Admin")
-              ->setLastName("Admin")
-              ->setEmail("admin@wellnessClub.com")
-              ->setHash($hash);
-        $manager->persist($user0);
-        $manager->flush();
+    //$user0= new User();
+      //  $hash = $this->encoder->encodePassword($user0,'password');
+        //$user0->setFirstName("Admin")
+          //    ->setLastName("Admin")
+            //  ->setEmail("admin@wellnessClub.com")
+              //->setHash($hash);
+        //$manager->persist($user0);
+        //$manager->flush();
 
         /*
         for ($count = 1; $count < 3; $count++) {
