@@ -10,7 +10,9 @@
             {{ comment.content }}
             &nbsp;&nbsp;
             {% if app.user %}
-            <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">x</a>
+            <a href="{{ id }}/comment/{{ comment.id }}/supprimer">
+              <i class="fa fa-remove" style="font-size:12px; color: red"></i>
+            </a>
             <br/>
             {% endif %}
             <a href="/get/post/{{ id }}/comment/{{ comment.id }}/like" style="color:blue">Like</a>
@@ -27,9 +29,10 @@
                     </b>
                     &nbsp;&nbsp;
                     {{ subcomment.content }}
+                    &nbsp;&nbsp;
                     {% if app.user %}
-                    <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
-                        x
+                    <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/supprimer">
+                        <i class="fa fa-remove" style="font-size:12px; color: red"></i>
                     </a>
                     {% endif %}
                     <br/>

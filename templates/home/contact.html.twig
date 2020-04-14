@@ -14,10 +14,10 @@
 <br>
 {% endfor %}
 <main role="main" class="container main">
-            {% include 'display_messages.html.twig' %}   
+            {% include 'display_messages.html.twig' %}
  </main>
 <h2 class="aboutus-title">Contactez-nous</h2>
-    
+
  <div>
         {{ form_start(email_form) }}
         {{ form_widget(email_form) }}
@@ -31,4 +31,6 @@
         {{ form_end(email_form) }}
     </div>
 </div>
+<br>
+<br>
 {% endblock %}

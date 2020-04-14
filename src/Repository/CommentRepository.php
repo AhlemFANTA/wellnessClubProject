@@ -20,6 +20,7 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
+    * @param article_id
     * @return Comment[]
     */
     public function findAllFromArticle($article_id): array
@@ -33,4 +34,14 @@ class CommentRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function findAllActiveFromArticle(int $article_id): array
+    {
+      $entityManager = $this->getEntityManager();
+      $qb = $this->createQueryBuilder('p')
+        ->where('p.article_id = :article_id')
+        ->andWhere('p.is_visible = 1')
+        ->setParameter('article_id', $article_id);
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
 }

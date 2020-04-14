@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-    {% block stylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-
-    {% endblock %}
     {% block title %} <title> Welcome to wellnessClub! </title>{% endblock %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'/>
+          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css"/>
+            <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+            <!--Include the above in your HEAD tag -->
+    {% endblock %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 {% block header %}
@@ -63,10 +64,13 @@
             Copyright © 2020
             <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WELLNESSCLUB</a>
 
-        
+
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
 {% endblock %}
+<<<<<<< HEAD
+=======
 </html>
+>>>>>>> b493c8d14375cb81e060b0fb3725bf52ab6043c2

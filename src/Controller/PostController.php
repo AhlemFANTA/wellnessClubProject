@@ -21,8 +21,18 @@ class PostController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $articles = $entityManager->getRepository(Post::class)->findAll();
-
-        return $this->render('post/getPosts.html.twig', array('articles' => $articles));
+        $comment_counts = [];
+        // trouver le nombre de commentaires pour chaque article
+        for ($i=0; $i<count($articles); $i++) {
+          $comments = $this->getDoctrine()
+              ->getRepository(Comment::class)
+              ->findAllActiveFromArticle($articles[$i]->id);
+          array_push($comment_counts, count($comments));
+        }
+        return $this->render('post/getPosts.html.twig', array(
+          'articles' => $articles,
+          'comment_counts' => $comment_counts,
+        ));
     }
 
     /**
@@ -35,29 +45,30 @@ class PostController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Post::class)->find($id);
-
+        // creér un formuliare pour soumettre un nouveau commentaire à le BDD
         $comment = new Comment();
         $comment->setArticleId($id);
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // soumettre form data à BDD
             $commentData = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
             $entityManager->flush();
             //return $this->redirectToRoute('wellness_post_list');
         };
-        // get all comments
+        // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
-        
-        return $this->render('post/getPost.html.twig', array('article' => $article,
-        'comments'=>$comments,
-        'submitForm'=>$form->createView(),
-        'id'=>$id,
-        'replying'=>'0'));
+        // vue d'article avec les commentaires
+        return $this->render('post/getPost.html.twig', array(
+          'article' => $article,
+          'comments'=>$comments,
+          'submitForm'=>$form->createView(),
+          'id'=>$id,
+          'replying'=>'0'
+        ));
     }
 
     /**
@@ -71,13 +82,13 @@ class PostController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Post::class)->find($id);
+        // creér un formuliare pour soumettre un commentaire (réponse) à le BDD
         $repondre = new Comment();
         $repondre->setParentId($comment_id);
         $repondre->setArticleId($id);
         $form = $this->createForm(CommentType::class, $repondre);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            // submit form data to database
             $commentData = $form->getData();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
@@ -88,17 +99,18 @@ class PostController extends AbstractController
                 ->findAllFromArticle($id);
             return $this->redirectToRoute('wellness_post', ['id'=>$id]);
         };
-        // get all comments from that article
+        // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
-
-
-        return $this->render('post/getPost.html.twig', array('article' => $article,
-        'comments'=>$comments,
-        'repondreForm'=>$form->createView(),
-        'id'=>$id,
-        'replying'=>'1',
-        'comment_id'=>$comment_id));
+        // vue d'article avec l'abilité de répondre à un certain commentaire
+        return $this->render('post/getPost.html.twig', array(
+          'article' => $article,
+          'comments'=>$comments,
+          'repondreForm'=>$form->createView(),
+          'id'=>$id,
+          'replying'=>'1',
+          'comment_id'=>$comment_id
+        ));
     }
 }

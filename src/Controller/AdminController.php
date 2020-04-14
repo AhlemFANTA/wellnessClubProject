@@ -80,10 +80,10 @@ class AdminController extends AbstractController
                 'No post found for id ' . $id
             );
         };
-
+        // créer un formulaire pour pouvoir modifier l'article
         $form = $this->createForm(PostType::class, $article);
         $form->handleRequest($request);
-
+        // modifier l'article dans le BDD si le formulaire est soumis
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setTitre($form["titre"]->getData());
             $article->setContenu($form["contenu"]->getData());
@@ -97,12 +97,12 @@ class AdminController extends AbstractController
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
-
+        // encore la vue de modifier l'article
         return $this->render('admin/modifyPost.html.twig', array(
             'form' => $form->createView(),
             'article' => $article,
             'comments' => $comments,
-            'id' => $id
+            'id' => $id,
         ));
     }
 
@@ -115,8 +115,18 @@ class AdminController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $articles = $entityManager->getRepository(Post::class)->findAll();
-
-        return $this->render('admin/getPostsAdmin.html.twig', array('articles' => $articles));
+        $comment_counts = [];
+        // trouver le nombre de commentaires pour chaque article
+        for ($i=0; $i<count($articles); $i++) {
+          $comments = $this->getDoctrine()
+              ->getRepository(Comment::class)
+              ->findAllActiveFromArticle($articles[$i]->id);
+          array_push($comment_counts, count($comments));
+        }
+        return $this->render('admin/getPostsAdmin.html.twig', array(
+          'articles' => $articles,
+          'comment_counts'=>$comment_counts,
+        ));
     }
 
     /**
@@ -125,14 +135,12 @@ class AdminController extends AbstractController
     public function supprimerComment(string $id, string $comment_id, Request $request)
     {
         $entityManager = $this->getDoctrine()->getManager();
+        // // rendre le commentaire non rendu, mais toujours stocké dans le BDD
         $comment = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->find($comment_id)
             ->setIsVisible(0);
         $entityManager->flush();
-        return $this->redirectToRoute('admin_modify_post',
-            ['id' => $id]);
+        return $this->redirectToRoute('admin_modify_post', ['id' => $id]);
     }
-
-
 }
