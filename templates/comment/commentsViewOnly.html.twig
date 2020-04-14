@@ -8,9 +8,15 @@
             <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
             &nbsp;&nbsp;{{ comment.content }}
             {% if app.user %}&nbsp;&nbsp;
+<<<<<<< HEAD
             <a href="{{ id }}/comment/{{ comment.id }}/supprimer">
                 <i class="fa fa-remove" style="font-size:12px; color: red"></i>
             </a>
+=======
+                <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">
+                    x
+                </a>
+>>>>>>> b493c8d14375cb81e060b0fb3725bf52ab6043c2
             {% endif %}
             <br/>
             ({{ comment.likes }} likes)

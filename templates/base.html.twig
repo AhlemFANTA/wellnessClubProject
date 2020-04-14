@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<html>
 <head>
     {% block title %} <title> Welcome to wellnessClub! </title>{% endblock %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
@@ -27,7 +27,6 @@
                              width="150" height="100">
                     </a>
 
-
                     {% if app.user %}
                         {# Si on est connecter  #}
                         <li class="nav-item">
@@ -46,6 +45,7 @@
                         <li><a href="{{ path('wellness_contact') }}">CONTACT</a></li>
                         <li><a href="{{ path('account_login') }}">CONNEXION</a></li>
                     {% endif %}
+
                 </ul>
             </div>
         </nav>
@@ -57,14 +57,20 @@
     <footer>
         <!-- Copyright -->
 
+
         <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">CGU & MENTIONS LEGALES</a>
 
         <div class=" text-center">
             Copyright © 2020
             <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WELLNESSCLUB</a>
 
+
         </div>
         <!-- Copyright -->
     </footer>
     <!-- Footer -->
 {% endblock %}
+<<<<<<< HEAD
+=======
+</html>
+>>>>>>> b493c8d14375cb81e060b0fb3725bf52ab6043c2

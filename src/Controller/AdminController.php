@@ -41,8 +41,8 @@ class AdminController extends AbstractController
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
             $em->flush();
-            $this->addFlash('success', 'Article Created! Knowledge is power!');
-            return $this->redirectToRoute('wellness_posts_list');
+            $this->addFlash('success', 'Article crée! Knowledge is power!');
+            /*return $this->redirectToRoute('wellness_posts_list');*/
         }
         return $this->render('admin/createPost.html.twig', array(
             'form' => $form->createView(),
@@ -57,11 +57,11 @@ class AdminController extends AbstractController
      */
     public function supprimerPost(string $id, Request $request)
     {
-      $em = $this->getDoctrine()->getManager();
-      $post = $em->getRepository(Post::class)->find($id);
-      $em->remove($post);
-      $em->flush();
-      return $this->redirectToRoute('wellness_posts_list');
+        $em = $this->getDoctrine()->getManager();
+        $post = $em->getRepository(Post::class)->find($id);
+        $em->remove($post);
+        $em->flush();
+        return $this->redirectToRoute('wellness_posts_list');
     }
 
     /**
@@ -76,9 +76,9 @@ class AdminController extends AbstractController
         $article = $em->getRepository(Post::class)->find($id);
 
         if (!$article) {
-          throw $this->createNotFoundException(
-            'No post found for id '.$id
-          );
+            throw $this->createNotFoundException(
+                'No post found for id ' . $id
+            );
         };
         // créer un formulaire pour pouvoir modifier l'article
         $form = $this->createForm(PostType::class, $article);
@@ -89,7 +89,7 @@ class AdminController extends AbstractController
             $article->setContenu($form["contenu"]->getData());
             $article->setAuteur($form["auteur"]->getData());
             $article->setPicFilename(
-                new File($this->getParameter('pictures_directory').'/'.$article->getPicFilename())
+                new File($this->getParameter('pictures_directory') . '/' . $article->getPicFilename())
             );
             $em->flush();
             $this->addFlash('success', 'Article was updated successfully!');

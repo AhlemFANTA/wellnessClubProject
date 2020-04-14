@@ -8,45 +8,48 @@
         </head>
     {% endblock %}
 
-{% block body %}
-    <div class="media-object" style=" padding-bottom: 10%">
-        <div class=background></div>
-        <div class="form" style="padding-left: 40%">
-            <h1 class="text-primary" style="padding-top: 6% "> Ajouter un nouveau article</h1>
-            {{ form_start(form, {
-                'attr': {
-                    'novalidate': 'novalidate',
-                    'class': 'col-lg-5'
-                }
-            }) }}
-            <br>
-            {{ form_row(form.titre) }}
-            {{ form_row(form.contenu) }}
-            {{ form_row(form.auteur) }}
 
-            {{ form_row(form.image, {
-                attr: {
-                    'placeholder': 'Selectionnez une image'
-                }
-            }) }}
-            <br><br>
-            <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
-            {{ form_end(form) }}
+
+    {% block body %}
+        <body>
+        {% block javascripts %}
+            <script>
+                $(document).ready(function(){
+                    $('input[type="file"]').change(function(e){
+                        var fileName = e.target.files[0].name;
+                        alert('The file "' + fileName +  '" has been selected.');
+                    });
+                });
+            </script>
+        {% endblock %}
+        <div class="media-object" style=" padding-bottom: 10%">
+            <div class=background></div>
+            <div class="form" style="padding-left: 40%">
+                <h1 class="text-primary" style="padding-top: 6% "> Ajouter un nouveau article</h1>
+                {{ form_start(form, {
+                    'attr': {
+                        'novalidate': 'novalidate',
+                        'class': 'col-lg-5'
+                    }
+                }) }}
+                <br>
+                {{ form_row(form.titre) }}
+                {{ form_row(form.contenu) }}
+                {{ form_row(form.auteur) }}
+                {{ form_row(form.image, {
+                    attr: {
+                        'placeholder': 'Selectionnez une image'
+                    }
+                }) }}
+                <br><br>
+                <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ form_end(form) }}
+            </div>
         </div>
-    </div>
-    {% block javascripts %}
-        <script>
-            $('.custom-file-input').on('change', function(event) {
-                var inputFile = event.currentTarget;
-                $(inputFile).parent()
-                    .find('.custom-file-label')
-                    .html(inputFile.files[0].name);
-            });
-        </script>
-    {% endblock %}
+    </body>
 {% endblock %}

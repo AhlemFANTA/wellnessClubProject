@@ -8,7 +8,7 @@ Ce blog nommé __"WellnessClub"__ est implémenté en langage de programmation P
 SGBD : MySQL 8.0.18  
 Test : Fixtures*
 
-__Ce projet contient 4 fonctionnalités__ :
+__Ce projet contient les fonctionnalités suivantes__ :
 -  gestion des articles (CRUD + affichage + Tests),
 -  gestion des commentaires (CRUD + affichage + Tests),
 -  gestion du système d'envoi de mail (avec le composant mailer de Symfony),  

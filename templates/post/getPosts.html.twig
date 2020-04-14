@@ -5,7 +5,6 @@
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-    <title></title>
 {% endblock %}
 
 {% block body %}
@@ -17,7 +16,6 @@
                 <div class="media-heading" style="text-align: center"><h1>Nos articles</h1></div>
             </div>
             <!--  <p class="text-right">l'équipe de WellnessClub</p> -->
-
             {% for item in articles %}
                 <img src="{{ asset('build/logo.png') }}" alt="Cinque Terre" width="304"
                      height="200" class="pull-left">
@@ -39,25 +37,23 @@
                                 </span>
                                 <li>|</li>
                                 <li>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star"></span>
-                                    <span class="glyphicon glyphicon-star-empty"></span>
-                                </li>
-                                <li>|</li>
-                                <li>
-                                    <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-                                    <span><i class="fa fa-facebook-square"></i></span>
-                                    <span><i class="fa fa-twitter-square"></i></span>
-                                    <span><i class="fa fa-google-plus-square"></i></span>
-                                </li>
-                            </ul>
-                        </div>
+
+                                        {% include 'comment/rating.html.twig' with {'rating':3}%}
+
+                            </li>
+                            <li>|</li>
+                            <li>
+                                <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                <span><i class="fa fa-facebook-square"></i></span>
+                                <span><i class="fa fa-twitter-square"></i></span>
+                                <span><i class="fa fa-google-plus-square"></i></span>
+                            </li>
+                        </ul>
                     </div>
                 </div>
-            {% endfor %}
-        </div>
-
+            </div>
+        {% endfor %}
     </div>
+
+</div>
 {% endblock %}

@@ -40,9 +40,9 @@ class PostController extends AbstractController
      * @param $id
      * @return Response
      */
+
     public function getPost($id, Request $request): Response
     {
-
         $entityManager = $this->getDoctrine()->getManager();
         $article = $entityManager->getRepository(Post::class)->find($id);
         // creér un formuliare pour soumettre un nouveau commentaire à le BDD
@@ -55,6 +55,7 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
             $entityManager->flush();
+            //return $this->redirectToRoute('wellness_post_list');
         };
         // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()

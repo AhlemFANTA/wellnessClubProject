@@ -9,10 +9,9 @@ class ApplicationType extends AbstractType
      * Permer d'avoir la configuration de base d'un champ
      * @param string $label
      * @param string $placeholder
-     * @param array $options
      * @return array
      */
-    protected function getConfiguration($label,$placeholder,$options=[])
+    protected function getConfiguration($label, $placeholder)
     {
         return array_merge(
             [
@@ -24,4 +23,3 @@ class ApplicationType extends AbstractType
             ;
     }
 }
-
