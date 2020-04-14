@@ -24,22 +24,8 @@ class CommentController extends AbstractController
         $likes = $comment->getLikes();
         $comment->setLikes($likes + 1);
         $entityManager->flush();
-        return $this->redirectToRoute('wellness_post',
-        ['id' => $id, 'comment_id'=>$comment_id]);
-    }
-
-    /**
-     * @Route("get/post/{id}/comment/{comment_id}/supprimer")
-     */
-    public function supprimerComment(string $id, string $comment_id, Request $request)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        $comment = $this->getDoctrine()
-            ->getRepository(Comment::class)
-            ->find($comment_id)
-            ->setIsVisible(0);
-        $entityManager->flush();
-        return $this->redirectToRoute('wellness_post',
-        ['id' => $id, 'comment_id'=>$comment_id]);
+        return $this->redirectToRoute('wellness_post', [
+          'id' => $id,
+        ]);
     }
 }
