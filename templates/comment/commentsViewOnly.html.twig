@@ -8,8 +8,8 @@
             <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
             &nbsp;&nbsp;{{ comment.content }}
             {% if app.user %}&nbsp;&nbsp;
-            <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">
-                x
+            <a href="{{ id }}/comment/{{ comment.id }}/supprimer">
+                <i class="fa fa-remove" style="font-size:12px; color: red"></i>
             </a>
             {% endif %}
             <br/>
@@ -25,8 +25,8 @@
                     &nbsp;&nbsp;
                     {{ subcomment.content }}
                     &nbsp;&nbsp;
-                    <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
-                        x
+                    <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer">
+                        <i class="fa fa-remove" style="font-size:12px; color: red"></i>
                     </a>
                     <br/>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

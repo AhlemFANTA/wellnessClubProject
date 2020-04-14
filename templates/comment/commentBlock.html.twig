@@ -8,11 +8,11 @@
     {% for comment in comments %}
         {% if comment.getParentId() == null and comment.getIsVisible() %}
             <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
-            &nbsp;&nbsp;{{ comment.content }}
+            &nbsp;&nbsp;{{ comment.content }}&nbsp;&nbsp;
 
             {% if app.user %}
-                <a href="{{ id }}/comment/{{ comment.id }}/supprimer" style="color:red">
-                    x
+                <a href="{{ id }}/comment/{{ comment.id }}/supprimer">
+                    <i class="fa fa-remove" style="font-size:12px; color: red"></i>
                 </a>
             {% endif %}
             <br/>
@@ -31,8 +31,8 @@
                     &nbsp;&nbsp;
                     {{ subcomment.content }}
                     {% if app.user %}&nbsp;
-                    <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer" style="color:red">
-                        x
+                    <a href="{{ id }}/comment/{{ subcomment.id }}/supprimer">
+                        <i class="fa fa-remove" style="font-size:12px; color: red"></i>
                     </a>
                     {% endif %}
                     <br/>

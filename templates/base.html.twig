@@ -2,9 +2,19 @@
 
 <head>
     {% block title %} <title> Welcome to wellnessClub! </title>{% endblock %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     {% block stylesheets %}
-        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/> {% endblock %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'/>
+          <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+          rel="stylesheet" id="bootstrap-css"/>
+            <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+            <!--Include the above in your HEAD tag -->
+    {% endblock %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 
 {% block header %}
@@ -42,7 +52,6 @@
     </header>
 {% endblock %}
 
-
 {% block footer %}
     <!-- Footer -->
     <footer>
@@ -59,4 +68,3 @@
     </footer>
     <!-- Footer -->
 {% endblock %}
-

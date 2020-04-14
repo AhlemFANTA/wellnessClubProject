@@ -21,8 +21,18 @@ class PostController extends AbstractController
 
         $entityManager = $this->getDoctrine()->getManager();
         $articles = $entityManager->getRepository(Post::class)->findAll();
-
-        return $this->render('post/getPosts.html.twig', array('articles' => $articles));
+        $comment_counts = [];
+        // trouver le nombre de commentaires pour chaque article
+        for ($i=0; $i<count($articles); $i++) {
+          $comments = $this->getDoctrine()
+              ->getRepository(Comment::class)
+              ->findAllFromArticle($articles[$i]->id);
+          array_push($comment_counts, count($comments));
+        }
+        return $this->render('post/getPosts.html.twig', array(
+          'articles' => $articles,
+          'comment_counts' => $comment_counts,
+        ));
     }
 
     /**
@@ -51,12 +61,13 @@ class PostController extends AbstractController
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
-
-        return $this->render('post/getPost.html.twig', array('article' => $article,
-        'comments'=>$comments,
-        'submitForm'=>$form->createView(),
-        'id'=>$id,
-        'replying'=>'0'));
+        return $this->render('post/getPost.html.twig', array(
+          'article' => $article,
+          'comments'=>$comments,
+          'submitForm'=>$form->createView(),
+          'id'=>$id,
+          'replying'=>'0'
+        ));
     }
 
     /**
@@ -92,12 +103,13 @@ class PostController extends AbstractController
             ->getRepository(Comment::class)
             ->findAllFromArticle($id);
 
-
-        return $this->render('post/getPost.html.twig', array('article' => $article,
-        'comments'=>$comments,
-        'repondreForm'=>$form->createView(),
-        'id'=>$id,
-        'replying'=>'1',
-        'comment_id'=>$comment_id));
+        return $this->render('post/getPost.html.twig', array(
+          'article' => $article,
+          'comments'=>$comments,
+          'repondreForm'=>$form->createView(),
+          'id'=>$id,
+          'replying'=>'1',
+          'comment_id'=>$comment_id
+        ));
     }
 }
