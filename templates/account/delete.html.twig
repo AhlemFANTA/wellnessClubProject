@@ -1,0 +1,14 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <h1>Supprimer votre compte </h1>
+        {{ form_start(form)}}
+        {{ form_widget(form)}}
+        <button type="submit"  class="btn btn-success">Supprimer</button>
+
+        {{ form_end(form)}}
+
+    </div>
+{% endblock %}
+ {% block footer %}{% endblock %}

@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -152,6 +153,31 @@ class AccountController extends AbstractController
     [
         'form'=>$form->createView()
     ]);
+    }
+     /**
+     * Permet  supprimer un user
+     *@Route("/account/delete", name="account_delete")
+     * @return Response
+     */
+    public function deleteUser(Request $request,EntityManagerInterface $manager)
+    {
+        //récuperer l'user connecter
+        $session = new Session();
+        $user = $this->getUser();
+        $form = $this->createForm(AccountType::class, $user);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager->remove($user);
+            $session->invalidate();
+                $manager->flush();
+                return $this->redirectToRoute('account_logout');
+                $this->addFlash('success',"Votre compte a été supprimé avec succées  !");
+
+        }
+        return $this->render('account/delete.html.twig',
+        [
+            'form'=>$form->createView()
+        ]);
     }
 
 
