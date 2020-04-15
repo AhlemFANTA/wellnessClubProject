@@ -83,6 +83,9 @@ class AdminController extends AbstractController
         // créer un formulaire pour pouvoir modifier l'article
         $form = $this->createForm(PostType::class, $article);
         $form->handleRequest($request);
+        $comments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findAllActiveFromArticle($id);
         // modifier l'article dans le BDD si le formulaire est soumis
         if ($form->isSubmitted() && $form->isValid()) {
             $article->setTitre($form["titre"]->getData());
@@ -96,7 +99,7 @@ class AdminController extends AbstractController
         };
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
-            ->findAllFromArticle($id);
+            ->findAllActiveFromArticle($id);
         // encore la vue de modifier l'article
         return $this->render('admin/modifyPost.html.twig', array(
             'form' => $form->createView(),
@@ -127,20 +130,5 @@ class AdminController extends AbstractController
           'articles' => $articles,
           'comment_counts'=>$comment_counts,
         ));
-    }
-
-    /**
-     * @Route("admin/modify/post/{id}/comment/{comment_id}/supprimer")
-     */
-    public function supprimerComment(string $id, string $comment_id, Request $request)
-    {
-        $entityManager = $this->getDoctrine()->getManager();
-        // // rendre le commentaire non rendu, mais toujours stocké dans le BDD
-        $comment = $this->getDoctrine()
-            ->getRepository(Comment::class)
-            ->find($comment_id)
-            ->setIsVisible(0);
-        $entityManager->flush();
-        return $this->redirectToRoute('admin_modify_post', ['id' => $id]);
     }
 }
