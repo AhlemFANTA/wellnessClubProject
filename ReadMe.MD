@@ -38,10 +38,11 @@ __Le Blog comprend les services suivants:__
    `composer install`
     
 - Créer la base de données MySQL en utilisant les commandes suivantes :
-	```php- php bin/console doctrine:database:create
-	 php bin/console doctrine:schema:create
-	 php bin/console doctrine:schema:update --force
-	 php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction
+	```
+      php bin/console doctrine:database:create
+      php bin/console make:migration
+      php bin/console doctrine:migrations:migrate --no-interaction
+      php bin/console doctrine:fixtures:load --group=PostCommentFixtures --no-interaction
 
 - Compiler assets et générer le dossier build en utilisant la commande suivante :  
      `yarn encore dev`
