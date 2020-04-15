@@ -1,0 +1,46 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="aboutus">
+                    <h1 class="aboutus-title" style="padding-top: 10%">QUI SOMMES-NOUS ?</h1>
+                    <p class="aboutus-text">WellnessClub encourage et
+                        aide les femmes à prendre soin d'elles-mêmes,
+                        de leurs familles et de la planète pour bâtir une
+                        société joyeuse et consciente où chacun
+                        puisse vivre pleinement et harmonieusement.
+                        WellnessClub est au coeur de cette mission en
+                        initiant la nouvelle culture et en abordant des
+                        thèmes de société et des sujets qui touchent
+                        l’ensemble de la population féminine : la santé,
+                        le bien-être, la beauté, la cuisine et bien
+                        d’autres. La femme, en totale harmonie avec l'homme,
+                        est pour nous, la clé de bouleversements présents et
+                        à venir. Pour cela, nous les femmes, avons besoin de
+                        pouvoir nous sentir pleinement nous-mêmes dans nos
+                        modes de vie et nos convictions. WellnessClub
+                        encourage l'art d'être femme. WellnessClub, c’est
+                        une aventure humaine et une équipe passionnée qui
+                        propose des contenus de qualité </p>
+                    <p class="aboutus-text"> Notre ambition est de bâtir,
+                        maintenant, et avec toutes les femmes, un media de
+                        référence, lieu d'échange et de partage, des femmes
+                        "bio" (bios en Grec = Vie). WellnessClub est le
+                        féminin qui change la vie, car il EST au coeur de ce
+                        qui est vivant.</p>
+                    <a class="aboutus-more" href="#">Plus de details</a>
+                </div>
+
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aboutus-banner" style="padding-top: 15%">
+                    <img src="{{ asset('build/team.png') }}" alt="" height="552" width="770">
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+{% endblock %}

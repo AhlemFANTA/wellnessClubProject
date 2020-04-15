@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity()
- * @ORM\Table(name="blog_post")
+ * @ORM\Table(name="post")
  * */
 class Post
 {
@@ -21,24 +22,43 @@ class Post
      * @ORM\Column(type="string")
      * @Assert\Length( min = 10, max = 70, minMessage = "Ce titre est trop court",  maxMessage = "Ce titre est trop long" )
      */
-    public $title;
+    public $titre;
 
     /**
      * @ORM\Column(type="string")
      * @Assert\NotBlank(message = "Le contenu ne peut être vide.")
      */
-    public $author;
+    public $auteur;
 
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message = "Un auteur doit être associé à l'article")
      */
-    public $content;
+    public $contenu;
 
     /**
      * @ORM\Column(type="datetime", name="date")
      */
     public $date;
+
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $picFilename;
+
+    public function getPicFilename()
+    {
+        return $this->picFilename;
+    }
+
+    public function setPicFilename($picFilename)
+    {
+        $this->picFilename = $picFilename;
+
+        return $this;
+    }
+
 
     /**
      * @return mixed
@@ -59,49 +79,49 @@ class Post
     /**
      * @return mixed
      */
-    public function getTitle()
+    public function getTitre()
     {
-        return $this->title;
+        return $this->titre;
     }
 
     /**
-     * @param mixed $title
+     * @param mixed $titre
      */
-    public function setTitle($title): void
+    public function setTitre($titre): void
     {
-        $this->title = $title;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param mixed $author
-     */
-    public function setAuthor($author): void
-    {
-        $this->author = $author;
+        $this->titre = $titre;
     }
 
     /**
      * @return mixed
      */
-    public function getContent()
+    public function getAuteur()
     {
-        return $this->content;
+        return $this->auteur;
     }
 
     /**
-     * @param mixed $content
+     * @param mixed $auteur
      */
-    public function setContent($content): void
+    public function setAuteur($auteur): void
     {
-        $this->content = $content;
+        $this->auteur = $auteur;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getContenu()
+    {
+        return $this->contenu;
+    }
+
+    /**
+     * @param mixed $contenu
+     */
+    public function setContenu($contenu): void
+    {
+        $this->contenu = $contenu;
     }
 
     /**
@@ -119,9 +139,6 @@ class Post
     {
         $this->date = $date;
     }
-
-
-
 
 
 }

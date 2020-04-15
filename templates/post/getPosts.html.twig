@@ -1,0 +1,51 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="well">
+            <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
+            <div class="media-body">
+                <div class="media-heading" style="text-align: center"><h1>Nos articles</h1></div>
+            </div>
+            <!--  <p class="text-right">l'équipe de WellnessClub</p> -->
+            {% for item in articles %}
+                <img src="{{ asset('build/logo.png') }}" alt="Cinque Terre" width="304"
+                     height="200" class="pull-left">
+                <div class="well">
+                    <div class="media">
+                        <div class="media-body">
+                            <article>
+                                <div class="media-heading"><h1><a
+                                                href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.titre }}</a>
+                                    </h1>
+                                </div>
+                                <h3> {{ item.contenu[:80] ~ '...' }}</h3>
+                            </article>
+                            <ul class="list-inline list-unstyled">
+                                <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heurs </span></li>
+                                <li>|</li>
+                                <span><i class="glyphicon glyphicon-comment"></i>
+                                  {{ comment_counts[loop.index0] }} commentaires
+                                </span>
+                                <li>|</li>
+                                <li>
+
+                                    {% include 'comment/rating.html.twig' with {'rating':3} %}
+
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                    <span><i class="fa fa-facebook-square"></i></span>
+                                    <span><i class="fa fa-twitter-square"></i></span>
+                                    <span><i class="fa fa-google-plus-square"></i></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}

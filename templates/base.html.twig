@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome to wellnessClub!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    {% block title %} <title> Welcome to WellnessClub! </title>{% endblock %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'/>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+              rel="stylesheet" id="bootstrap-css"/>
+        <!--Include the above in your HEAD tag -->
+    {% endblock %}
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js">
+    </script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+
+{% block header %}
+    <header class="media">
+        <nav class="menu">
+            <div>
+                <ul>
+                    <a class="pull-left" href="#">
+                        <img src="{{ asset('build//logo.png') }}" class="img-circle" alt="Cinque Terre"
+                             width="150" height="100">
+                    </a>
+
+                    {% if app.user %}
+                        {# Si on est Admin connecté  #}
+                        <li class="nav-item">
+                        <li><a href="{{ path('wellness_homepage') }}">Accueil</a></li>
+                        <li><a href="{{ path('wellness_about') }}">Qui Somme-Nous ?</a></li>
+                        <li><a href="{{ path('wellness_posts_list') }}" class="nav-link">Gestion Articles</a></li>
+                        <li><a href="{{ path('account_parametre') }}" class="nav-link">Gestion Comptes</a></li>
+                        <li><a href="{{ path('wellness_contact') }}">Contact</a></li>
+                        <li><a href="{{ path('account_logout') }}" class="nav-link">Déconnexion</a></li>
+                    {% else %}
+
+                        <li class="nav-item">
+                        <li><a href="{{ path('wellness_homepage') }}">ACCUEIL</a></li>
+                        <li><a href="{{ path('wellness_about') }}">QUI SOMMES-NOUS ?</a></li>
+                        <li><a href="{{ path('wellness_posts') }}">ARTICLES</a></li>
+                        <li><a href="{{ path('wellness_contact') }}">CONTACT</a></li>
+                        <li><a href="{{ path('account_login') }}">CONNEXION</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
+
+{% block footer %}
+    <!-- Footer -->
+    <footer>
+        <!-- Copyright -->
+
+
+        <a href="{{ path('wellness_mention') }}" target="_blank" style="color:white;list-style:none">CGU & MENTIONS
+            LEGALES</a>
+
+        <div class=" text-center">
+            Copyright © 2020
+            <a href="https://www.facebook.com/WellnessClubcom-102173204705197" target="_blank"> WELLNESSCLUB</a>
+
+
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <!-- Footer -->
+{% endblock %}
 </html>

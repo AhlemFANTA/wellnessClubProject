@@ -1,0 +1,29 @@
+{% block body %}
+    <h2 class="replay">Commentaires</h2>
+    {% for comment in comments %}
+        <div class="well">
+        {% if comment.getParentId() == null and comment.getIsVisible() %}
+            {% include 'comment/comment.html.twig' with
+                {'comment': comment, 'can_reply': true, 'is_subcomment': false,
+                    'can_delete': false, 'can_like': true} %}
+
+            {% for subcomment in comments %}
+                {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
+                    {% include 'comment/comment.html.twig' with
+                        {'comment': subcomment, 'can_reply': false, 'is_subcomment': true,
+                            'can_delete': false, 'can_like': true} %}
+                {% endif %}
+            {% endfor %}
+            {% if comment.id == comment_id %}
+                <div>
+                    {{ form(repondreForm) }}
+                    <button id="commentAn" style="color: red" onclick="window.location.href='/get/post/{{ id }}';">
+                        Annuler
+                    </button>
+                </div>
+                <br/> <br/><br/>
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

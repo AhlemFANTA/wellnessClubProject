@@ -1,0 +1,48 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container" style="padding-top: 70px ; text-align: center">
+        <h1 id="titre">Gestion de compte Admin</h1>
+        <div class="col-sm-6">
+            <div class="education-block" style="background-size: cover">
+                <span class="glyphicon glyphicon-education" style="color: white"></span>
+                <a href="{{ path('account_register') }}">
+                    <button class="button button1">Ajouter un compte Admin</button>
+                </a>
+            </div>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="education-block" style="background-size: cover">
+                <span class="glyphicon glyphicon-education" style="color: white"></span>
+                <a href="{{ path('account_password') }}">
+                    <button class="button button2">Changer votre mot de passe</button>
+                </a>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-6" style="padding-top: 70px">
+                <div class="education-block" style="background-size: cover">
+                    <span class="glyphicon glyphicon-education" style="color: white"></span>
+                    <a class="aboutus-more" href="{{ path('account_delete') }}">
+                        <button class="button button2">Supprimer votre compte</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="col-sm-6" style="padding-top: 70px">
+                <div class="education-block" style="background-size: cover">
+                    <span class="glyphicon glyphicon-education" style="color: white"></span>
+                    <a class="aboutus-more" href="{{ path('account_profile') }}">
+                        <button class="button button2">Modifier votre compte Admin</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

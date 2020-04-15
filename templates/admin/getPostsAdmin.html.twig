@@ -1,0 +1,69 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
+            </div>
+            <div style="text-align:center">
+                <a href="{{ path('wellness_post_new') }}" class="btn btn-primary btn-lg" role="button"
+                   aria-disabled="true"
+                   style="margin: 20px; background-color: green">
+                    + Ajouter un nouveau article
+                </a>
+            </div>
+            <div class="media-body">
+                <div class="media-heading"><h1 style="text-align: center">Bienvenue Admin</h1></div>
+            </div>
+
+            {% for item in articles %}
+                <img src="{{ asset('build/logo.png') }}" alt="Cinque Terre" width="304"
+                     height="200" class="pull-left">
+                <div class="well">
+                    <div class="media">
+                        <div class="media-body">
+                            <article>
+                                <div class="media-heading"><h1><a
+                                                href="{{ path('wellness_post',  {id: item.id}) }}">{{ item.titre }}</a>
+                                    </h1>
+                                </div>
+                                <h3> {{ item.contenu[:60] ~ '...' }}</h3>
+                            </article>
+                            <ul class="list-inline list-unstyled">
+                                <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heures </span></li>
+                                <li>|</li>
+                                <span><i class="glyphicon glyphicon-comment"></i>
+                            {{ comment_counts[loop.index0] }} comments</span>
+                                <li>|</li>
+                                <li>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star"></span>
+                                    <span class="glyphicon glyphicon-star-empty"></span>
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    <span><i class="fa fa-facebook-square"></i></span>
+                                    <span><i class="fa fa-twitter-square"></i></span>
+                                    <span><i class="fa fa-google-plus-square"></i></span>
+                                </li>
+                            </ul>
+                            <a href="{{ path('admin_modify_post', {'id' : item.id }) }}" class="btn btn-primary btn-lg"
+                               role="button" aria-disabled="true" style="margin: 10px">
+                                Modifier
+                            </a>
+
+                            <a href="{{ path('admin_supprimer_post', {'id' : item.id}) }}" class="btn btn-danger btn-lg"
+                               role="button" aria-disabled="true"
+                               style="margin: 10px">
+                                Supprimer
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

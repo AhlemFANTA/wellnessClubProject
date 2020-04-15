@@ -1,0 +1,45 @@
+{% include 'base.html.twig' %}
+
+{% block body %}
+    <body>
+    <div class="container">
+        <div class="well">
+            <div class="media">
+                <div class="media-body">
+                    <h2 class="media-heading text-info">{{ article.title }}</p></h2>
+                    <div class="text-body">
+                        <div class="d-flex align-text-bottom"><h4>{{ article.content }}</h4></div>
+                        <p class="text-right">By Ahlem</p>
+                        <ul class="list-inline list-unstyled">
+                            <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heurs </span></li>
+                            <li>|</li>
+                            <span><i class="glyphicon glyphicon-comment"></i>
+                        {{ comments|length }} commentaires</span>
+                            <li>|</li>
+                            <li>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star"></span>
+                                <span class="glyphicon glyphicon-star-empty"></span>
+                            </li>
+                            <li>|</li>
+                            <li>
+                                <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                <span><i class="fa fa-facebook-square"></i></span>
+                                <span><i class="fa fa-twitter-square"></i></span>
+                                <span><i class="fa fa-google-plus-square"></i></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% if replying %}
+        {% include 'comment/commentRepondre.html.twig' %}
+    {% else %}
+        {% include 'comment/commentBlock.html.twig' %}
+    {% endif %}
+    </body>
+{% endblock %}
