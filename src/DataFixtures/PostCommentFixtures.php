@@ -1,47 +1,49 @@
 <?php
 
 namespace App\DataFixtures;
-use Faker\Factory;
+
+use App\Entity\Comment;
 use App\Entity\Post;
 use App\Entity\User;
-use App\Entity\Comment;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class PostCommentFixtures extends Fixture
 {
     private $encoder;
+
     public function __construct(UserPasswordEncoderInterface $encoder)
     {
         $this->encoder = $encoder;
     }
+
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('FR-fr');
         //Nous gérons les utilisateurs
         $users = [];
-        for($i=1;$i<=2;$i++)
-        {
+        for ($i = 1; $i <= 2; $i++) {
             $user = new User();
-            $hash = $this->encoder->encodePassword($user,'password');
+            $hash = $this->encoder->encodePassword($user, 'password');
             $user->setFirstName($faker->firstname)
-                 ->setLastName($faker->lastname)
-                 ->setEmail($faker->email)
+                ->setLastName($faker->lastname)
+                ->setEmail($faker->email)
                 // ->setInstroduction($faker->sentence())
-                 ->setHash($hash);
+                ->setHash($hash);
 
             //on demande au Manger de sauvegarder
             $manager->persist($user);
             $users[] = $user;
         }
         /* premiere connexion */
-        $user0= new User();
-        $hash = $this->encoder->encodePassword($user0,'password');
+        $user0 = new User();
+        $hash = $this->encoder->encodePassword($user0, 'password');
         $user0->setFirstName("Admin")
-              ->setLastName("Admin")
-              ->setEmail("admin@wellnessClub.com")
-              ->setHash($hash);
+            ->setLastName("Admin")
+            ->setEmail("admin@wellnessClub.com")
+            ->setHash($hash);
         $manager->persist($user0);
         $manager->flush();
 
@@ -73,12 +75,12 @@ class PostCommentFixtures extends Fixture
 
         for ($count = 1; $count < 4; $count++) {
             $comment = new Comment();
-            $comment->setPrenom("Jane". " ". $count);
+            $comment->setPrenom("Jane" . " " . $count);
             $comment->setNom("Doe");
 
             $comment->setEmail("Jane@email.fr");
 
-            $comment->setRating(mt_rand(1,5));
+            $comment->setRating(mt_rand(1, 5));
             $comment->setEmail("email@exemple.fr");
 
             $comment->setContent("Merci pour cet article très utile, bon courage pour la suite ");

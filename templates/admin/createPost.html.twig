@@ -1,54 +1,45 @@
 {% include 'base.html.twig' %}
 
-    {% block body %}
-        <body>
-        {% block javascripts %}
-            <script>
-                $(document).ready(function(){
-                    $('input[type="file"]').change(function(e){
-                        var fileName = e.target.files[0].name;
-                        alert('The file "' + fileName +  '" has been selected.');
-                    });
+{% block body %}
+    {% block javascripts %}
+        <script>
+            $(document).ready(function () {
+                $('input[type="file"]').change(function (e) {
+                    var fileName = e.target.files[0].name;
+                    alert('The fichier " ' + fileName + ' "a été selectionné.');
                 });
-            </script>
-        {% endblock %}
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="media-object" style=" padding-bottom: 10%">
-            <div class=background></div>
-            <div class="form" style="padding-left: 40%">
-                <h1 class="text-primary" style="padding-top: 6% "> Ajouter un nouveau article</h1>
-                {{ form_start(form, {
-                    'attr': {
-                        'novalidate': 'novalidate',
-                        'class': 'col-lg-5'
-                    }
-                }) }}
-                <br>
-                {{ form_row(form.titre) }}
-                {{ form_row(form.contenu) }}
-                {{ form_row(form.auteur) }}
-                {{ form_row(form.image, {
-                    attr: {
-                        'placeholder': image_name
-                    }
-                }) }}
-                <br><br>
-                <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
-                {% for message in app.flashes('success') %}
-                    <div class="alert alert-success">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-                {{ form_end(form) }}
-            </div>
+            });
+        </script>
+    {% endblock %}
+
+    <div class="media-object" style=" padding-bottom: 10%; padding-top: 10%;">
+        <div class=background></div>
+        <div class="form" style="padding-left: 40%">
+
+            <h1 class="text-primary" style="padding-top: 6% "> Ajouter un nouveau article</h1>
+            {{ form_start(form, {
+                'attr': {
+                    'novalidate': 'novalidate',
+                    'class': 'col-lg-5'
+                }
+            }) }}
+            <br>
+            {{ form_row(form.titre) }}
+            {{ form_row(form.contenu) }}
+            {{ form_row(form.auteur) }}
+            {{ form_row(form.image, {
+                attr: {
+                    'placeholder': image_name
+                }
+            }) }}
+            <br><br>
+            <button type="submit" class="btn btn-primary" style="margin-left: 40%">Publier l'article</button>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {{ form_end(form) }}
         </div>
-    </body>
+    </div>
 {% endblock %}

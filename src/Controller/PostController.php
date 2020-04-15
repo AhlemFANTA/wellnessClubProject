@@ -2,12 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Post;
 use App\Entity\Comment;
+use App\Entity\Post;
 use App\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
@@ -23,15 +23,15 @@ class PostController extends AbstractController
         $articles = $entityManager->getRepository(Post::class)->findAll();
         $comment_counts = [];
         // trouver le nombre de commentaires pour chaque article
-        for ($i=0; $i<count($articles); $i++) {
-          $comments = $this->getDoctrine()
-              ->getRepository(Comment::class)
-              ->findAllActiveFromArticle($articles[$i]->id);
-          array_push($comment_counts, count($comments));
+        for ($i = 0; $i < count($articles); $i++) {
+            $comments = $this->getDoctrine()
+                ->getRepository(Comment::class)
+                ->findAllActiveFromArticle($articles[$i]->id);
+            array_push($comment_counts, count($comments));
         }
         return $this->render('post/getPosts.html.twig', array(
-          'articles' => $articles,
-          'comment_counts' => $comment_counts,
+            'articles' => $articles,
+            'comment_counts' => $comment_counts,
         ));
     }
 
@@ -55,7 +55,7 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
             $entityManager->flush();
-            $this->redirectToRoute('wellness_post', ['id'=>$id]);
+            $this->redirectToRoute('wellness_post', ['id' => $id]);
         };
         // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()
@@ -63,11 +63,11 @@ class PostController extends AbstractController
             ->findAllActiveFromArticle($id);
         // vue d'article avec les commentaires
         return $this->render('post/getPost.html.twig', array(
-          'article' => $article,
-          'comments'=>$comments,
-          'submitForm'=>$form->createView(),
-          'id'=>$id,
-          'replying'=>'0'
+            'article' => $article,
+            'comments' => $comments,
+            'submitForm' => $form->createView(),
+            'id' => $id,
+            'replying' => '0'
         ));
     }
 
@@ -97,7 +97,7 @@ class PostController extends AbstractController
             $comments = $this->getDoctrine()
                 ->getRepository(Comment::class)
                 ->findAllFromArticle($id);
-            return $this->redirectToRoute('wellness_post', ['id'=>$id]);
+            return $this->redirectToRoute('wellness_post', ['id' => $id]);
         };
         // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()
@@ -105,12 +105,12 @@ class PostController extends AbstractController
             ->findAllFromArticle($id);
         // vue d'article avec l'abilité de répondre à un certain commentaire
         return $this->render('post/getPost.html.twig', array(
-          'article' => $article,
-          'comments'=>$comments,
-          'repondreForm'=>$form->createView(),
-          'id'=>$id,
-          'replying'=>'1',
-          'comment_id'=>$comment_id
+            'article' => $article,
+            'comments' => $comments,
+            'repondreForm' => $form->createView(),
+            'id' => $id,
+            'replying' => '1',
+            'comment_id' => $comment_id
         ));
     }
 }

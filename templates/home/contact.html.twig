@@ -1,31 +1,30 @@
 {% include 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
+    <div class="container">
 
-{% for i in 0..5 %}
-<br>
-{% endfor %}
-    <div class="well">
-<main role="main" class="container main">
-            {% include 'display_messages.html.twig' %}
- </main>
-<h2 class="aboutus-title">Contactez-nous</h2>
+        {% for i in 0..5 %}
+            <br>
+        {% endfor %}
+        <div class="well">
+            <main role="main" class="container main">
+                {% include 'display_messages.html.twig' %}
+            </main>
+            <h2 class="aboutus-title">Contactez-nous</h2>
+            <div>
+                {{ form_start(email_form) }}
+                {{ form_widget(email_form) }}
 
- <div>
-        {{ form_start(email_form) }}
-        {{ form_widget(email_form) }}
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                        <input type="submit" value="Envoyer" class="btn btn-success"/>
+                    </div>
+                </div>
 
-        <div class="form-group row">
-            <div class="col-sm-10">
-                <input type="submit" value="Envoyer" class="btn btn-success"/>
+                {{ form_end(email_form) }}
             </div>
         </div>
-
-        {{ form_end(email_form) }}
     </div>
-</div>
-</div>
-<br>
-<br>
+    <br>
+    <br>
 {% endblock %}

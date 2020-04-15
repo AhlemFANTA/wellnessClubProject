@@ -4,18 +4,16 @@
     <div class="container">
         <div class="well">
             <div class="media" style="padding-top: 3%">
-
-                <img src="{{ asset('build/nutrition.jpg') }}" class="img-circle" alt="Cinque Terre" width="304"
-                     height="236">
                 <div class="media-body">
                     <h1 class="text-primary" style="padding-top: 6% "> Modifier l'article</h1>
-                    {{ form_start(form)  }}
+                    {{ form_start(form) }}
                     {{ form_row(form.titre) }}
                     {{ form_row(form.contenu) }}
                     {{ form_row(form.auteur) }}
                     {{ form_row(form.image) }}
 
-                    <button type="submit" class="btn btn-primary" style="margin-left: 40%">Mettre à jour l'article</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 40%">Mettre à jour l'article
+                    </button>
 
                     {% for message in app.flashes('success') %}
                         <div class="alert alert-success">
@@ -38,7 +36,6 @@
                         </li>
                         <li>|</li>
                         <li>
-                            <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
                             <span><i class="fa fa-facebook-square"></i></span>
                             <span><i class="fa fa-twitter-square"></i></span>
                             <span><i class="fa fa-google-plus-square"></i></span>

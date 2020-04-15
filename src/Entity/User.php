@@ -4,9 +4,9 @@ namespace App\Entity;
 
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -69,10 +69,9 @@ class User implements UserInterface
 
     public function initializeSlug()
     {
-        if(empty($this->slug))
-        {
-         $slugify = new Slugify();
-         $this->slug = $slugify->slugify($this->firstName .' '.$this->lastName  );
+        if (empty($this->slug)) {
+            $slugify = new Slugify();
+            $this->slug = $slugify->slugify($this->firstName . ' ' . $this->lastName);
         }
     }
 
@@ -141,21 +140,27 @@ class User implements UserInterface
 
         return $this;
     }
+
     public function getRoles()
     {
         return ['ROLE_USER'];
     }
+
     public function getPassword()
     {
         return $this->hash;
     }
+
     public function getSalt()
-    {}
+    {
+    }
+
     //nous on va se connecter avec le mail
     public function getUsername()
     {
         return $this->email;
     }
+
     //au cas ou on a des donénes sensibles
     public function eraseCredentials()
     {

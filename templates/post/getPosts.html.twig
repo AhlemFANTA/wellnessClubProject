@@ -1,14 +1,6 @@
 {% include 'base.html.twig' %}
-{% block stylesheets %}
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-{% endblock %}
 
 {% block body %}
-
     <div class="container">
         <div class="well">
             <img class="media-object" src="{{ asset('build/wellness.jpg') }}" alt="post img">
@@ -38,22 +30,22 @@
                                 <li>|</li>
                                 <li>
 
-                                        {% include 'comment/rating.html.twig' with {'rating':3}%}
+                                    {% include 'comment/rating.html.twig' with {'rating':3} %}
 
-                            </li>
-                            <li>|</li>
-                            <li>
-                                <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
-                                <span><i class="fa fa-facebook-square"></i></span>
-                                <span><i class="fa fa-twitter-square"></i></span>
-                                <span><i class="fa fa-google-plus-square"></i></span>
-                            </li>
-                        </ul>
+                                </li>
+                                <li>|</li>
+                                <li>
+                                    <!-- Use Font Awesome http://fortawesome.github.io/Font-Awesome/ -->
+                                    <span><i class="fa fa-facebook-square"></i></span>
+                                    <span><i class="fa fa-twitter-square"></i></span>
+                                    <span><i class="fa fa-google-plus-square"></i></span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
-    </div>
+            {% endfor %}
+        </div>
 
-</div>
+    </div>
 {% endblock %}

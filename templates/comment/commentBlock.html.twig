@@ -1,23 +1,22 @@
-{% block stylesheets %}
-    <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-{% endblock %}
 {% block body %}
     <h2>Laisser un commentaire</h2>
     {{ form(submitForm) }}
     <h2>Commentaires</h2>
     {% for comment in comments %}
+        <div class="well">
         {% if comment.getParentId() == null and comment.getIsVisible() %}
             {% include 'comment/comment.html.twig' with
-            {'comment': comment, 'can_reply': true, 'is_subcomment': false,
-             'can_delete': false, 'can_like': true } %}
+                {'comment': comment, 'can_reply': true, 'is_subcomment': false,
+                    'can_delete': false, 'can_like': true } %}
 
             {% for subcomment in comments %}
                 {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
                     {% include 'comment/comment.html.twig' with
-                    {'comment': subcomment, 'can_reply': false, 'is_subcomment': true,
-                     'can_delete': false, 'can_like': true} %}
+                        {'comment': subcomment, 'can_reply': false, 'is_subcomment': true,
+                            'can_delete': false, 'can_like': true} %}
                 {% endif %}
             {% endfor %}
         {% endif %}
     {% endfor %}
+    </div>
 {% endblock %}

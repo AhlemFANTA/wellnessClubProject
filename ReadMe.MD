@@ -9,10 +9,10 @@ SGBD : MySQL 8.0.18
 Test : Fixtures*
 
 __Ce projet contient les fonctionnalités suivantes__ :
--  gestion des articles (CRUD + affichage + Tests),
--  gestion des commentaires (CRUD + affichage + Tests),
--  gestion du système d'envoi de mail (avec le composant mailer de Symfony),  
--  gestion du compte Admin (connexion, création compte Admin, réinitialisation du mot de passe).  
+-  Gestion des articles (CRUD + affichage + Tests),
+-  Gestion des commentaires et des avis (CRUD + affichage + Tests),
+-  Gestion du système d'envoi de mail (avec le composant mailer de Symfony),  
+-  Gestion du compte Admin (connexion, CRUD compte Admin, réinitialisation du mot de passe).  
 
 
 __Le Blog comprend les services suivants:__
@@ -20,9 +20,10 @@ __Le Blog comprend les services suivants:__
 - Commenter un ou plusieurs articles,
 - Répondre à un commentaire,
 - Supprimer son commentaire,
+- Noter l'article de 0 à 5
 - Contacter l'administrateur via le formulaire de contact,
 - Se connecter entant qu'Admin, et donc avoir en plus les privilèges suivants : 
-  - Ajouter un nouveau article,
+  - Ajouter un nouveau article avec image,
   - Modifier un article,
   - Supprimer un article, 
   - Ajouter  un commentaire, 
@@ -46,7 +47,7 @@ __Le Blog comprend les services suivants:__
 
 - Compiler assets et générer le dossier build en utilisant la commande suivante :  
      `yarn encore dev`
-
+- Modifier le fichier .env selon votre configuration (BDD, @mail...)
 
 ## 2. Exécution du service
 Le service se lance et tourne sur le port 8080 en utilisant la commande suivante : `php -S 127.0.0.1:8000 -t public`  
@@ -56,12 +57,23 @@ Pour se connecter en tant qu'administrateur du blog utiliser le mail et le mot d
 Mot de passe :  password*
 
 ## III - Captures
-Liste des services :
-- ![Homepage](docs/images/homepage.png)
+Accueil :
+![Homepage](docs/images/homepage.png)
 
-Liste des services visiteur :
-- ![About Us](docs/images/aboutUs.png)
+Qui somme-nous ? :
+![About Us](docs/images/aboutUs.png)
 
-Test services admin:
-- ![Post](docs/images/postCRUD.png)
+Gestion des comptes Admin :
+![Post](docs/images/accountCRUD.png)
 
+Gestion des articles :
+![Post](docs/images/postCRUD.png)
+
+Gestion des commentaires :
+![Post](docs/images/commentCRUD.png)
+
+Avis :
+![Post](docs/images/avis.png)
+
+Contact :
+ ![Post](docs/images/contactUs.png)

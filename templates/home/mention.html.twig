@@ -1,8 +1,10 @@
 {% include 'base.html.twig' %}
 
-{% block body %}
+{% block stylesheets %}
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+{% endblock %}
 
+{% block body %}
     <div class="aboutus-section">
         <div class="container" style="padding-top: 60px">
             <div class="row">
@@ -19,7 +21,8 @@
                         <h5 style="font-weight: bold">Responsable développement</h5>
                         YASSIN HAMOU OUALI <br><br><br>
                         <h5 style="font-weight: bold">Conditions d’utilisation</h5>
-                        <p class="aboutus-text">Le site accessible par le nom de domaine suivant : WellnessClub.blog.com est exploité
+                        <p class="aboutus-text">Le site accessible par le nom de domaine suivant : WellnessClub.blog.com
+                            est exploité
                             dans le respect de la législation française. L’utilisation de ce site est régie par les
                             présentes mentions légales et conditions générales d’utilisation. En utilisant le site, vous
                             reconnaissez avoir pris connaissance de ces conditions et les avoir acceptées. Celles-ci
@@ -40,6 +43,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock %}

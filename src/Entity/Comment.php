@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Entity;
-use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
@@ -71,9 +71,10 @@ class Comment
      */
     private $rating;
 
-    public function __construct() {
-     $this->setLikes(0);
-     $this->setIsVisible(1);
+    public function __construct()
+    {
+        $this->setLikes(0);
+        $this->setIsVisible(1);
     }
 
     public function getId(): ?int

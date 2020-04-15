@@ -2,14 +2,10 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use App\Form\CommentType;
-use App\Form\RepondreType;
 use App\Entity\Comment;
 use App\Service\CommentSubmitter;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
 class CommentController extends AbstractController
 {
@@ -25,7 +21,7 @@ class CommentController extends AbstractController
         $comment->setLikes($likes + 1);
         $entityManager->flush();
         return $this->redirectToRoute('wellness_post', [
-          'id' => $id,
+            'id' => $id,
         ]);
     }
 
@@ -44,15 +40,15 @@ class CommentController extends AbstractController
         $subcomments = $this->getDoctrine()
             ->getRepository(Comment::class)
             ->findAllSubcomments($comment_id);
-        for ($i=0; $i<count($subcomments); $i++) {
-          $comment = $this->getDoctrine()
-              ->getRepository(Comment::class)
-              ->find($subcomments[$i]->id)
-              ->setIsVisible(0);
+        for ($i = 0; $i < count($subcomments); $i++) {
+            $comment = $this->getDoctrine()
+                ->getRepository(Comment::class)
+                ->find($subcomments[$i]->id)
+                ->setIsVisible(0);
         };
         $entityManager->flush();
         return $this->redirectToRoute('admin_modify_post', [
-          'id' => $id,
+            'id' => $id,
         ]);
     }
 }

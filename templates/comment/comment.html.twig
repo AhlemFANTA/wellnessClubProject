@@ -1,36 +1,34 @@
 {% block body %}
-{% if not is_subcomment %}
-  <br><br>
-{% endif %}
-{% if is_subcomment %}
-  <div class="alert alert-light" style="background-color: white; margin-left: 30px">
-{% else %}
-  <div class="alert alert-light" style="background-color: white">
-{% endif %}
-      <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
-      {#<strong>Avis :</strong> {{ comment.rating}}#}
-      {#{% set rating = comment.rating %}#}
-      {% include 'comment/rating.html.twig' with {'rating':comment.rating} %}
-      <br>
-      &nbsp;&nbsp;{{ comment.content }}
-      &nbsp;&nbsp;
-
-      <br/>
-      {% if can_like %}
+    {% if not is_subcomment %}
+        <br><br>
+    {% endif %}
+    {% if is_subcomment %}
+        <div class="alert alert-light" style="background-color: white; margin-left: 30px">
+    {% else %}
+        <div class="alert alert-light" style="background-color: white">
+    {% endif %}
+    <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
+    {#<strong>Avis :</strong> {{ comment.rating}}#}
+    {#{% set rating = comment.rating %}#}
+    {% include 'comment/rating.html.twig' with {'rating':comment.rating} %}
+    <br>
+    &nbsp;&nbsp;{{ comment.content }}
+    <br/>
+    {% if can_like %}
         <a href="{{ id }}/comment/{{ comment.id }}/like" style="color:blue; text-decoration:None">Like</a>
-      {% else %}
+    {% else %}
         Likes
-      {% endif %}
-      ({{ comment.likes }})
-      &nbsp;&nbsp;
-      {% if can_reply %}
+    {% endif %}
+    ({{ comment.likes }})
+    &nbsp;&nbsp;
+    {% if can_reply %}
         <a href="{{ id }}/comment/{{ comment.id }}/repondre" style="color:blue">Repondre</a>
-        &nbsp;&nbsp;
-      {% endif %}
-      {% if can_delete %}
-      <a href="{{ path('supprimer_comment', {'id': id, 'comment_id': comment.id}) }}">
-        <i class="fa fa-remove" style="color:red"></i>
-      </a>
-      {% endif %}
-  </div>
+    {% endif %}
+    {% if can_delete %}
+        <a href="{{ path('supprimer_comment', {'id': id, 'comment_id': comment.id}) }}">
+            <i class="fa fa-remove" style="color:red"></i>
+        </a>
+    {% endif %}
+    </div>
+    </div>
 {% endblock %}

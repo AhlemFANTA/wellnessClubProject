@@ -175,6 +175,8 @@ nav ul li a {
     }
     div.aboutus, div.text-body{
         text-align: justify;
+        padding-top: 12px;
+        padding-bottom: 5%;
     }
     .button {
         background-color: #4CAF50; /* Green */

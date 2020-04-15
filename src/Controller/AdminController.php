@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
+use App\Entity\Post;
+use App\Form\PostType;
 use App\Service\FileUploader;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,9 +13,6 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\Form\PostType;
-use App\Entity\Post;
-use App\Entity\Comment;
 
 
 class AdminController extends AbstractController
@@ -30,7 +30,7 @@ class AdminController extends AbstractController
         $post->setDate(new \DateTime('now'));
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
-        $image_name = 'Selectionnez une image';
+        $image_name = '';
         $picFile = $form['image']->getData();
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $picFile */
@@ -48,7 +48,7 @@ class AdminController extends AbstractController
         return $this->render('admin/createPost.html.twig', array(
             'form' => $form->createView(),
             'image_name' => $image_name,
-         ));
+        ));
     }
 
     /**
@@ -122,15 +122,15 @@ class AdminController extends AbstractController
         $articles = $entityManager->getRepository(Post::class)->findAll();
         $comment_counts = [];
         // trouver le nombre de commentaires pour chaque article
-        for ($i=0; $i<count($articles); $i++) {
-          $comments = $this->getDoctrine()
-              ->getRepository(Comment::class)
-              ->findAllActiveFromArticle($articles[$i]->id);
-          array_push($comment_counts, count($comments));
+        for ($i = 0; $i < count($articles); $i++) {
+            $comments = $this->getDoctrine()
+                ->getRepository(Comment::class)
+                ->findAllActiveFromArticle($articles[$i]->id);
+            array_push($comment_counts, count($comments));
         }
         return $this->render('admin/getPostsAdmin.html.twig', array(
-          'articles' => $articles,
-          'comment_counts'=>$comment_counts,
+            'articles' => $articles,
+            'comment_counts' => $comment_counts,
         ));
     }
 }

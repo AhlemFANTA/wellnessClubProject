@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-use Swift_Mailer;
+
 use App\Form\ContactType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,7 +18,7 @@ class ContactController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+
             $contactFormData = $form->getData();
             $message = (new \Swift_Message('You Got Mail from your blog !'))
                 ->setFrom($contactFormData['from'])
@@ -27,13 +27,12 @@ class ContactController extends AbstractController
                 ->setBody(
                     $contactFormData['message'],
                     'text/plain'
-                )
-            ;
+                );
 
             $mailer->send($message);
 
             $this->addFlash('success', ' Votre message est envoyé avec succès');
-            
+
             return $this->redirectToRoute('wellness_contact');
 
         }

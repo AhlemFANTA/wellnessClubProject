@@ -14,9 +14,7 @@ class AccountType extends AbstractType
         $builder
             ->add('firstName')
             ->add('lastName')
-            ->add('email')
-
-        ;
+            ->add('email');
     }
 
     public function configureOptions(OptionsResolver $resolver)

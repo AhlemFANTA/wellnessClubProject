@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Entity;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 class PasswordUpdate
@@ -17,7 +18,7 @@ class PasswordUpdate
     private $newPassword;
     /**
      *
-     *@Assert\EqualTo(propertyPath="newPassword",message="Vous n'avez pas correctement confirmer votre nouveau mot de passe")
+     * @Assert\EqualTo(propertyPath="newPassword",message="Vous n'avez pas correctement confirmer votre nouveau mot de passe")
      */
     private $confirmPassword;
 

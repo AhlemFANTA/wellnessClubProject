@@ -20,14 +20,14 @@ class CommentRepository extends ServiceEntityRepository
     }
 
     /**
-    * @param article_id
-    * @return Comment[]
-    */
+     * @param article_id
+     * @return Comment[]
+     */
     public function findAllFromArticle($article_id): array
     {
-      $entityManager = $this->getEntityManager();
-      $query = $entityManager->createQuery(
-        'SELECT comment
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT comment
         FROM App\Entity\Comment comment
         WHERE comment.article_id = :article_id'
         )->setParameter('article_id', $article_id);
@@ -36,21 +36,21 @@ class CommentRepository extends ServiceEntityRepository
 
     public function findAllActiveFromArticle(int $article_id): array
     {
-      $entityManager = $this->getEntityManager();
-      $qb = $this->createQueryBuilder('p')
-        ->where('p.article_id = :article_id')
-        ->andWhere('p.is_visible = 1')
-        ->setParameter('article_id', $article_id);
+        $entityManager = $this->getEntityManager();
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.article_id = :article_id')
+            ->andWhere('p.is_visible = 1')
+            ->setParameter('article_id', $article_id);
         $query = $qb->getQuery();
         return $query->execute();
     }
 
     public function findAllSubcomments(int $comment_id): array
     {
-      $entityManager = $this->getEntityManager();
-      $qb = $this->createQueryBuilder('p')
-        ->where('p.parent_id = :comment_id')
-        ->setParameter('comment_id', $comment_id);
+        $entityManager = $this->getEntityManager();
+        $qb = $this->createQueryBuilder('p')
+            ->where('p.parent_id = :comment_id')
+            ->setParameter('comment_id', $comment_id);
         $query = $qb->getQuery();
         return $query->getResult();
     }
