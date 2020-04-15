@@ -1,21 +1,5 @@
 {% include 'base.html.twig' %}
 
-{% block stylesheets %}
-
-    <head>
-        <META HTTP-EQUIV="REFRESH" CONTENT="10;URL=http://127.0.0.1:8000/show/posts">
-        <link rel="stylesheet"
-              href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"/>
-        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet"
-              id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-        <link href="{{ asset('build/app.css') }}" rel="stylesheet"/>
-        <title></title>
-    </head>
-{% endblock %}
-
 {% block body %}
     <div class="container">
         <div class="well">
@@ -40,7 +24,7 @@
                     {% endfor %}
                     {{ form_end(form) }}
                     <ul class="list-inline list-unstyled">
-                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 days, 8 hours </span></li>
+                        <li><span><i class="glyphicon glyphicon-calendar"></i> 2 jours, 8 heures </span></li>
                         <li>|</li>
                         <span><i class="glyphicon glyphicon-comment"></i>
                         {{ comments|length }} comments</span>
