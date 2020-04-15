@@ -55,12 +55,12 @@ class PostController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($commentData);
             $entityManager->flush();
-            //return $this->redirectToRoute('wellness_post_list');
+            $this->redirectToRoute('wellness_post', ['id'=>$id]);
         };
         // récupérer les commentaires de cet article
         $comments = $this->getDoctrine()
             ->getRepository(Comment::class)
-            ->findAllFromArticle($id);
+            ->findAllActiveFromArticle($id);
         // vue d'article avec les commentaires
         return $this->render('post/getPost.html.twig', array(
           'article' => $article,

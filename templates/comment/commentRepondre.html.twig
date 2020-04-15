@@ -5,43 +5,15 @@
     <h2 class="replay">Commentaires</h2>
     {% for comment in comments %}
         {% if comment.getParentId() == null and comment.getIsVisible() %}
-            <b>{{ comment.prenom }}&nbsp;{{ comment.nom }}</b>
-            &nbsp;&nbsp;
-            {{ comment.content }}
-            &nbsp;&nbsp;
-            {% if app.user %}
-            <a href="{{ id }}/comment/{{ comment.id }}/supprimer">
-              <i class="fa fa-remove" style="font-size:12px; color: red"></i>
-            </a>
-            <br/>
-            {% endif %}
-            <a href="/get/post/{{ id }}/comment/{{ comment.id }}/like" style="color:blue">Like</a>
-            ({{ comment.likes }})
-            &nbsp;&nbsp;
-            <a href="/get/post/{{ id }}/comment/{{ comment.id }}/repondre" style="color:blue; text-decoration:None">Repondre</a>
-            <br/><br/>
+          {% include 'comment/comment.html.twig' with
+            {'comment': comment, 'can_reply': true, 'is_subcomment': false,
+             'can_delete': false, 'can_like': true} %}
 
             {% for subcomment in comments %}
                 {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
-                    <b>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        {{ subcomment.prenom }}&nbsp;{{ subcomment.nom }}
-                    </b>
-                    &nbsp;&nbsp;
-                    {{ subcomment.content }}
-                    &nbsp;&nbsp;
-                    {% if app.user %}
-                    <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/supprimer">
-                        <i class="fa fa-remove" style="font-size:12px; color: red"></i>
-                    </a>
-                    {% endif %}
-                    <br/>
-                    <a href="/get/post/{{ id }}/comment/{{ subcomment.id }}/like"
-                       style="color:blue; text-decoration:None">
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Like
-                    </a>({{ subcomment.likes }})
-                    &nbsp;&nbsp;
-                    <br/><br/>
+                {% include 'comment/comment.html.twig' with
+                  {'comment': subcomment, 'can_reply': false, 'is_subcomment': true
+                  'can_delete': false, 'can_like': true} %}
                 {% endif %}
             {% endfor %}
             {% if comment.id == comment_id %}
