@@ -30,13 +30,14 @@ class AdminController extends AbstractController
         $post->setDate(new \DateTime('now'));
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
+        $image_name = 'Selectionnez une image';
 
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $picFile */
             $picFile = $form['image']->getData();
             if ($picFile) {
-                $picFileName = $fileUploader->upload($picFile);
-                $post->setPicFilename($picFileName);
+                $image_name = $fileUploader->upload($picFile);
+                $post->setPicFilename($image_name);
             }
             $em = $this->getDoctrine()->getManager();
             $em->persist($post);
@@ -46,7 +47,8 @@ class AdminController extends AbstractController
         }
         return $this->render('admin/createPost.html.twig', array(
             'form' => $form->createView(),
-        ));
+            'image_name' => $image_name,
+         ));
     }
 
     /**

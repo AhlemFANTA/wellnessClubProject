@@ -4,6 +4,16 @@ html, body {
     width: 100%;
 }
 
+footer {
+        background-color: #5eb5e0;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 9%;
+        text-align: center; padding-top: 15px;
+    }
+
 body {
     font-family: "Helvetica Neue",sans-serif;
     font-weight: lighter;
@@ -46,7 +56,7 @@ nav ul {
     color: #fff;
     text-align: right;
     margin: 0;
-    padding: 0 40px 0 0;
+    padding: 0 20px 0 0;
     transition: 1s;
 }
 
@@ -56,7 +66,7 @@ nav.black ul {
 
 nav ul li {
     display: inline-block;
-    padding: 16px 40px;;
+    padding: 16px 20px;;
 }
 
 nav ul li a {
@@ -230,5 +240,16 @@ nav ul li a {
         width: 100%;
         height: 9%;
         text-align: center; padding-top: 15px;
+        background-color: #5eb5e0;
     }
+}
+
+footer {
+    left: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+    height: 9%;
+    text-align: center; padding-top: 15px;
+    background-color: #5eb5e0;
 }
