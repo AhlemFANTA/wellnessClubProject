@@ -9,7 +9,7 @@ SGBD : MySQL 8.0.18
 Test : Fixtures*
 
 __Ce projet contient les fonctionnalités suivantes__ :
--  Gestion du compte Admin (connexion, CRUD compte Admin, réinitialisation du mot de passe),
+-  Gestion du compte Admin (CRUD compte Admin, authentification, réinitialisation du mot de passe),
 -  Gestion des articles (CRUD + affichage + Tests),
 -  Gestion des commentaires et des avis (CRUD + affichage + Tests),
 -  Gestion du système d'envoi de mail (avec le composant mailer de Symfony).  
