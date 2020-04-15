@@ -36,7 +36,7 @@ class AdminController extends AbstractController
             /** @var UploadedFile $picFile */
             $picFile = $form['image']->getData();
             if ($picFile) {
-                $image_name = $fileUploader->upload($picFile);
+                $image_name = substr($fileUploader->upload($picFile), 0, 40);
                 $post->setPicFilename($image_name);
             }
             $em = $this->getDoctrine()->getManager();
