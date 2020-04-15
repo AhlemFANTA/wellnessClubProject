@@ -40,6 +40,16 @@ class CommentController extends AbstractController
             ->getRepository(Comment::class)
             ->find($comment_id)
             ->setIsVisible(0);
+        // rendre les réponses au commentaire non rendu aussi
+        $subcomments = $this->getDoctrine()
+            ->getRepository(Comment::class)
+            ->findAllSubcomments($comment_id);
+        for ($i=0; $i<count($subcomments); $i++) {
+          $comment = $this->getDoctrine()
+              ->getRepository(Comment::class)
+              ->find($subcomments[$i]->id)
+              ->setIsVisible(0);
+        };
         $entityManager->flush();
         return $this->redirectToRoute('admin_modify_post', [
           'id' => $id,

@@ -12,7 +12,7 @@
             {% for subcomment in comments %}
                 {% if subcomment.getParentId() == comment.id and subcomment.getIsVisible() %}
                 {% include 'comment/comment.html.twig' with
-                  {'comment': subcomment, 'can_reply': false, 'is_subcomment': true
+                  {'comment': subcomment, 'can_reply': false, 'is_subcomment': true,
                   'can_delete': false, 'can_like': true} %}
                 {% endif %}
             {% endfor %}

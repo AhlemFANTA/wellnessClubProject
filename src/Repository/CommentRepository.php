@@ -44,4 +44,14 @@ class CommentRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
         return $query->execute();
     }
+
+    public function findAllSubcomments(int $comment_id): array
+    {
+      $entityManager = $this->getEntityManager();
+      $qb = $this->createQueryBuilder('p')
+        ->where('p.parent_id = :comment_id')
+        ->setParameter('comment_id', $comment_id);
+        $query = $qb->getQuery();
+        return $query->getResult();
+    }
 }
