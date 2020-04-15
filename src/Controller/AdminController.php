@@ -31,7 +31,7 @@ class AdminController extends AbstractController
         $form = $this->createForm(PostType::class, $post);
         $form->handleRequest($request);
         $image_name = 'Selectionnez une image';
-
+        $picFile = $form['image']->getData();
         if ($form->isSubmitted() && $form->isValid()) {
             /** @var UploadedFile $picFile */
             $picFile = $form['image']->getData();
