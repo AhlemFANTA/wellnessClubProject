@@ -22,7 +22,7 @@ __Le Blog comprend les services suivants:__
 - Répondre à un commentaire,
 - Liker un commentaire,
 - Noter un ou plusieurs commentaires de 0 à 5,
-- Contacter l'administrateur via le formulaire de contact,
+- Contacter l'administrateur via le formulaire de contact.
 - Se connecter entant qu'Admin, et donc avoir en plus les privilèges suivants : 
   - Creer un compte Admin,
   - Reinitialiser son mot de passe,
@@ -57,6 +57,8 @@ Pour se connecter en tant qu'administrateur du blog utiliser le mail et le mot d
 *Adresse mail : admin@wellnessClub.com   
 Mot de passe :  password*  
  PS : une fois connecté, vous pouvez créer votre propre compte. 
+ 
+ 
 ## III - Captures
 Accueil :
 ![Homepage](docs/images/homepage.png)
